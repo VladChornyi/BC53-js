@@ -19,9 +19,18 @@ console.log(strArr[i]);
 // const substring = "S";
 // const filteredArr = [];
 
-// 4. Перевірити, чи містить масив заданий елемент. Якщо містить, видалити його, якщо ні - додати в кінець масиву.
-// const arr = ["JavaScript", "HTML", "CSS"];
-// const elem = "CSS";
+ //4. Перевірити, чи містить масив заданий елемент. Якщо містить, видалити його, якщо ні - додати в кінець масиву.
+ const arr = ["JavaScript", "HTML", "CSS"];
+const elem = "SS";
+const index = arr.indexOf(elem)
+if (index === -1) {
+    arr.push(elem)
+    
+}
+else { arr.splice(index, 1) } 
+console.log (arr)
+ 
+
 
 // 5. Знайти кількість слів у рядку, використовуючи методи масивів та цикл for...of.
 // const sentence = "JavaScript is a popular programming language.";
