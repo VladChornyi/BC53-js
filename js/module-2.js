@@ -1,11 +1,11 @@
 // 1.Перетворити рядок, що містить слова, розділені комами, в масив слів і вивести кожне слово в окремому рядку.
-const str = "JavaScript, HTML, CSS, React";
+// const str = "JavaScript, HTML, CSS, React";
 
-const strArr = str.split(', ')
+// const strArr = str.split(', ')
 
-for(let i=0; i<strArr.length; i +=1) {
-console.log(strArr[i]);
-}
+// for(let i=0; i<strArr.length; i +=1) {
+// console.log(strArr[i]);
+// }
 
 
 
@@ -14,10 +14,24 @@ console.log(strArr[i]);
 // 2.Об'єднати масив слів в рядок, розділений комами та пробілами.
 // const words = ["JavaScript", "HTML", "CSS", "React"];
 
+// const str = words.join(", ")
+
+// console.log('object :>> ', str);
+
 // 3.Знайти всі елементи масиву, що містять задану підстроку, та об'єднати їх у новий масив, після чого вивести у консоль лог повідомлення "Масив елементів, що містять підстроку substring: ..." .Результат повинен бути розділений комами та пробілами.(використати indexOf)
 // const arr = ["JavaScript", "HTML", "CSS", "React"];
 // const substring = "S";
 // const filteredArr = [];
+
+// for (let i = 0; i < arr.length; i +=1) {
+// if (arr[i].indexOf(substring) !== -1) {
+//     filteredArr.push(arr[i])
+// }
+// }
+// console.log('object :>> ', `Масив елементів, що містять підстроку ${substring}: ${filteredArr.join(", ")}`);
+
+
+
 
 // 4. Перевірити, чи містить масив заданий елемент. Якщо містить, видалити його, якщо ні - додати в кінець масиву.
 // const arr = ["JavaScript", "HTML", "CSS"];
