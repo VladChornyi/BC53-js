@@ -46,21 +46,32 @@
 // console.log(getStringLength(sentence))
 
 // 6.Знайти перший парний елемент масиву, який більший за 10, використовуючи цикл for з оператором break та continue.
-const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
-const result = null;
-function getOddNumbers(numbers) {
-  for (let i = 0; i < numbers.length; i += 1) {
-    if (numbers[i] % 2 === 0 && numbers[i] > 10) {
-      return numbers[i];
-    }
-  }
-  return "Парних елементів немає ";
-}
+// const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
+// const result = null;
+// function getOddNumbers(numbers) {
+//   for (let i = 0; i < numbers.length; i += 1) {
+//     if (numbers[i] % 2 === 0 && numbers[i] > 10) {
+//       return numbers[i];
+//     }
+//   }
+//   return "Парних елементів немає ";
+// }
 
-console.log(getOddNumbers(numbers));
+// console.log(getOddNumbers(numbers));
 
 // 7. Написати функцію, яка повертає найбільше число з масиву.
-// const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
+
+const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
+function maxNum(numbers) {
+  let max = numbers[0];
+for (const iterator of numbers) {
+  if (iterator > max) {
+    max = iterator
+  }
+}
+  return max
+}
+console.log(maxNum(numbers));
 
 // 8. Написати функцію, яка приймає рядок і повертає кількість голосних літер у цьому рядку.
 // const vowels = ["a", "e", "i", "o", "u"];
