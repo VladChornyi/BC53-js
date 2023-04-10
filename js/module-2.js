@@ -30,24 +30,34 @@
 // }
 // console.log(arr);
 
-// 5. Знайти кількість слів у рядку, використовуючи методи масивів та цикл for...of.
-const sentence = "JavaScript is a popular programming language.";
+// // 5. Знайти кількість слів у рядку, використовуючи методи масивів та цикл for...of.
+// const sentence = "JavaScript is a popular programming language.";
 
-function getStringLength(string){
-    const strArray= string.split(' ');
-    let result = 0
-    for ( let item of strArray){
-        result+=1
-    }
-    
-    return result
+// function getStringLength(string){
+//     const strArray= string.split(' ');
+//     let result = 0
+//     for ( let item of strArray){
+//         result+=1
+//     }
 
-}
-console.log(getStringLength(sentence))
+//     return result
+
+// }
+// console.log(getStringLength(sentence))
 
 // 6.Знайти перший парний елемент масиву, який більший за 10, використовуючи цикл for з оператором break та continue.
-// const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
-// const result = null;
+const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
+const result = null;
+function getOddNumbers(numbers) {
+  for (let i = 0; i < numbers.length; i += 1) {
+    if (numbers[i] % 2 === 0 && numbers[i] > 10) {
+      return numbers[i];
+    }
+  }
+  return "Парних елементів немає ";
+}
+
+console.log(getOddNumbers(numbers));
 
 // 7. Написати функцію, яка повертає найбільше число з масиву.
 // const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
