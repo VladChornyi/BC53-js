@@ -31,7 +31,19 @@
 // console.log(arr);
 
 // 5. Знайти кількість слів у рядку, використовуючи методи масивів та цикл for...of.
-// const sentence = "JavaScript is a popular programming language.";
+const sentence = "JavaScript is a popular programming language.";
+
+function getStringLength(string){
+    const strArray= string.split(' ');
+    let result = 0
+    for ( let item of strArray){
+        result+=1
+    }
+    
+    return result
+
+}
+console.log(getStringLength(sentence))
 
 // 6.Знайти перший парний елемент масиву, який більший за 10, використовуючи цикл for з оператором break та continue.
 // const numbers = [5, 12, 3, 8, 7, 15, 11, 18];
