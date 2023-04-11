@@ -1,6 +1,18 @@
 // 1. Напиши функцію getEvenNumbers(start, end), яка повертає масив усіх парних чисел від start до end.
+// function getEvenNubmers(start, end) {
+//     const newArray = []
+// for (let i=start; i <= end; i+=1) {
+//     if (i % 2 === 0) {
+//         newArray.push(i)
+//     }
+// }return newArray
 
-// const array = [9, 22, 2, 7, 6, 12, 13, 5, 17, 14];
+// }
+
+
+// console.log(getEvenNubmers(3, 11))
+
+
 
 // 2. Напишіть функцію sumArray, яка приймає масив чисел та повертає суму всіх його елементів.
 // const array = [1, 2, 3, 4, 5];
