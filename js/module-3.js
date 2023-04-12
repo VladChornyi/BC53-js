@@ -24,7 +24,7 @@
 // };
 // console.log("object :>> ", box.calculateTotal());
 
-//5. Створіть об'єкт "автомобіль" з властивостями "марка", "модель" та "швидкість". Напишіть метод "accelerate", 
+//5. Створіть об'єкт "автомобіль" з властивостями "марка", "модель" та "швидкість". Напишіть метод "accelerate",
 // який буде збільшувати швидкість автомобіля на 10 км/год.
 
 // const car = {
@@ -71,3 +71,34 @@
 //   { name: "Сир", price: 120, quantity: 1 },
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
+
+// 9.Задача: є масив об'єктів, кожен об'єкт містить інформацію про певний товар: назву товару, його ціну та кількість.
+// Необхідно вивести інформацію про ті товари, ціна яких менше 50 гривень та кількість більше 5 одиниць.
+// const products = [
+//   { name: 'product 1', price: 20, quantity: 10 },
+//   { name: 'product 2', price: 30, quantity: 4 },
+//   { name: 'product 3', price: 40, quantity: 6 },
+//   { name: 'product 4', price: 50, quantity: 3 },
+//   { name: 'product 5', price: 60, quantity: 2 }
+// ];
+
+const basket = {
+  products: [
+    { name: "product 1", price: 20, quantity: 10 },
+    { name: "product 2", price: 30, quantity: 4 },
+    { name: "product 3", price: 40, quantity: 6 },
+    { name: "product 4", price: 50, quantity: 3 },
+    { name: "product 5", price: 60, quantity: 2 },
+  ],
+
+  getProductsByPrice(maxPrice, minQuantity) {
+    const array = [];
+    for (const el of this.products) {
+      if (maxPrice >= el.price && minQuantity <= el.quantity) {
+        array.push(el);
+      }
+    }
+    return array;
+  },
+};
+console.log(basket.getProductsByPrice(40, 6));
