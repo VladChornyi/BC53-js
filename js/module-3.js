@@ -82,23 +82,53 @@
 //   { name: 'product 5', price: 60, quantity: 2 }
 // ];
 
-const basket = {
-  products: [
-    { name: "product 1", price: 20, quantity: 10 },
-    { name: "product 2", price: 30, quantity: 4 },
-    { name: "product 3", price: 40, quantity: 6 },
-    { name: "product 4", price: 50, quantity: 3 },
-    { name: "product 5", price: 60, quantity: 2 },
-  ],
+// const basket = {
+//   products: [
+//     { name: "product 1", price: 20, quantity: 10 },
+//     { name: "product 2", price: 30, quantity: 4 },
+//     { name: "product 3", price: 40, quantity: 6 },
+//     { name: "product 4", price: 50, quantity: 3 },
+//     { name: "product 5", price: 60, quantity: 2 },
+//   ],
 
-  getProductsByPrice(maxPrice, minQuantity) {
-    const array = [];
-    for (const el of this.products) {
-      if (maxPrice >= el.price && minQuantity <= el.quantity) {
-        array.push(el);
+//   getProductsByPrice(maxPrice, minQuantity) {
+//     const array = [];
+//     for (const el of this.products) {
+//       if (maxPrice >= el.price && minQuantity <= el.quantity) {
+//         array.push(el);
+//       }
+//     }
+//     return array;
+//   },
+// };
+// console.log(basket.getProductsByPrice(40, 6));
+// 10.У вас є масив об'єктів, який представляє собою список студентів, де кожен студент представлений об'єктом з властивостями "ім'я", "прізвище",
+  // "рік народження" та "список курсів".Напишіть функцію, яка бере цей масив об'єктів та повертає новий масив, який містить об'єкти студентів, що належать 
+  // до певного списку курсів, переданого як параметр.Кожен об'єкт у новому масиві має містити тільки ім'я та прізвище студента.
+const academia = {
+
+  students :[
+    { name: 'John', surname: 'Doe', birthYear: 2000, courses: ['Math', 'Physics'] },
+    { name: 'Jane', surname: 'Doe', birthYear: 2001, courses: ['Chemistry', 'Biology'] },
+    { name: 'Bob', surname: 'Smith', birthYear: 2002, courses: ['Math', 'Art'] },
+    { name: 'Alice', surname: 'Johnson', birthYear: 2003, courses: ['Physics', 'Chemistry'] }
+  ],
+  getStudenstByCourses(cours) {
+    const result = [];
+    for (let i = 0; i < this.students.length; i += 1){
+      this.students[i].courses
+      for (let j = 0; j < this.students[i].courses.length; j += 1){
+        if (cours.includes(this.students[i].courses[j])) {
+          result.push({
+            name: this.students[i].name,
+            surname:this.students[i].surname
+          })
+          break;  
+        }
       }
+
     }
-    return array;
-  },
-};
-console.log(basket.getProductsByPrice(40, 6));
+    return result
+  }
+}
+console.table(academia.getStudenstByCourses(['Math', 'Art']))
