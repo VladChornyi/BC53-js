@@ -72,7 +72,54 @@
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
 
-// 9.Задача: є масив об'єктів, кожен об'єкт містить інформацію про певний товар: назву товару, його ціну та кількість.
+// 9. Припустимо, є два масиви об'єктів:
+// Необхідно створити новий масив об'єктів, що буде містити всі об'єкти з обох масивів, але без дублів. Тобто об'єкти з однаковим значенням ключа "id" повинні бути об'єднані в один об'єкт.
+// const arr1 = [{id: 1, name: 'John'}, {id: 2, name: 'Mary'}, {id: 3, name: 'Bob'}];
+// const arr2 = [{id: 2, name: 'Mary'}, {id: 4, name: 'Jane'}, {id: 5, name: 'Tom'}];
+
+// 10. Напишіть функцію createPerson(), яка приймає об'єкт параметрів з наступними властивостями:
+
+// firstName (рядок) - ім'я персони
+// lastName (рядок) - прізвище персони
+// age (число) - вік персони
+// gender (рядок) - стать персони
+// occupation (рядок) - робота персони
+// Функція повинна повернути об'єкт, що містить ці властивості. Якщо якась властивість не передається як параметр, то вона повинна мати значення за замовчуванням. Наприклад, якщо age не передається, то його значення за замовчуванням повинно бути 18.
+
+// Крім того, якщо передається додаткова властивість, яку не передбачено в списку, то вона повинна бути проігнорована.
+
+// Приклади виклику функції та їх очікувані результати:
+
+// const person1 = createPerson({
+//   firstName: 'John',
+//   lastName: 'Doe',
+//   age: 25,
+//   gender: 'male',
+//   occupation: 'developer'
+// });
+// console.log(person1);
+// Очікуваний результат: { firstName: 'John', lastName: 'Doe', age: 25, gender: 'male', occupation: 'developer' }
+
+// const person2 = createPerson({
+//   firstName: 'Jane',
+//   lastName: 'Doe',
+//   gender: 'female'
+// });
+// console.log(person2);
+// Очікуваний результат: { firstName: 'Jane', lastName: 'Doe', age: 18, gender: 'female', occupation: undefined }
+
+// const person3 = createPerson({
+//   firstName: 'Bob',
+//   lastName: 'Smith',
+//   age: 30,
+//   gender: 'male',
+//   occupation: 'teacher',
+//   hobby: 'reading'
+// });
+// console.log(person3);
+// Очікуваний результат: { firstName: 'Bob', lastName: 'Smith', age: 30, gender: 'male', occupation: 'teacher' }
+
+// 11*.Задача: є масив об'єктів, кожен об'єкт містить інформацію про певний товар: назву товару, його ціну та кількість.
 // Необхідно вивести інформацію про ті товари, ціна яких менше 50 гривень та кількість більше 5 одиниць.
 // const products = [
 //   { name: 'product 1', price: 20, quantity: 10 },
@@ -102,33 +149,33 @@
 //   },
 // };
 // console.log(basket.getProductsByPrice(40, 6));
-// 10.У вас є масив об'єктів, який представляє собою список студентів, де кожен студент представлений об'єктом з властивостями "ім'я", "прізвище",
-  // "рік народження" та "список курсів".Напишіть функцію, яка бере цей масив об'єктів та повертає новий масив, який містить об'єкти студентів, що належать 
-  // до певного списку курсів, переданого як параметр.Кожен об'єкт у новому масиві має містити тільки ім'я та прізвище студента.
-const academia = {
+// 12**.У вас є масив об'єктів, який представляє собою список студентів, де кожен студент представлений об'єктом з властивостями "ім'я", "прізвище",
+// "рік народження" та "список курсів".Напишіть функцію, яка бере цей масив об'єктів та повертає новий масив, який містить об'єкти студентів, що належать
+// до певного списку курсів, переданого як параметр.Кожен об'єкт у новому масиві має містити тільки ім'я та прізвище студента.
+// const academia = {
 
-  students :[
-    { name: 'John', surname: 'Doe', birthYear: 2000, courses: ['Math', 'Physics'] },
-    { name: 'Jane', surname: 'Doe', birthYear: 2001, courses: ['Chemistry', 'Biology'] },
-    { name: 'Bob', surname: 'Smith', birthYear: 2002, courses: ['Math', 'Art'] },
-    { name: 'Alice', surname: 'Johnson', birthYear: 2003, courses: ['Physics', 'Chemistry'] }
-  ],
-  getStudenstByCourses(cours) {
-    const result = [];
-    for (let i = 0; i < this.students.length; i += 1){
-      this.students[i].courses
-      for (let j = 0; j < this.students[i].courses.length; j += 1){
-        if (cours.includes(this.students[i].courses[j])) {
-          result.push({
-            name: this.students[i].name,
-            surname:this.students[i].surname
-          })
-          break;  
-        }
-      }
+//   students :[
+//     { name: 'John', surname: 'Doe', birthYear: 2000, courses: ['Math', 'Physics'] },
+//     { name: 'Jane', surname: 'Doe', birthYear: 2001, courses: ['Chemistry', 'Biology'] },
+//     { name: 'Bob', surname: 'Smith', birthYear: 2002, courses: ['Math', 'Art'] },
+//     { name: 'Alice', surname: 'Johnson', birthYear: 2003, courses: ['Physics', 'Chemistry'] }
+//   ],
+//   getStudenstByCourses(cours) {
+//     const result = [];
+//     for (let i = 0; i < this.students.length; i += 1){
+//       this.students[i].courses
+//       for (let j = 0; j < this.students[i].courses.length; j += 1){
+//         if (cours.includes(this.students[i].courses[j])) {
+//           result.push({
+//             name: this.students[i].name,
+//             surname:this.students[i].surname
+//           })
+//           break;
+//         }
+//       }
 
-    }
-    return result
-  }
-}
-console.table(academia.getStudenstByCourses(['Math', 'Art']))
+//     }
+//     return result
+//   }
+// }
+// console.table(academia.getStudenstByCourses(['Math', 'Art']))
