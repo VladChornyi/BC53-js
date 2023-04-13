@@ -72,46 +72,75 @@
 
 //7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor",
 //яка буде повертати масив книг відповідного автора.
-const books = [
-  { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
-  {
-    title: "Преступление и наказание",
-    author: "Федор Достоевский",
-    year: 1866,
-  },
-  {
-    title: "Гаррі Поттер і філософський камінь",
-    author: "Джоан Роулінг",
-    year: 1997,
-  },
-  { title: "Мастер и Маргарита", author: "Михаил Булгаков", year: 1967 },
-  { title: "1984", author: "Джордж Оруелл", year: 1949 },
-];
+// const books = [
+//   { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
+//   {
+//     title: "Преступление и наказание",
+//     author: "Федор Достоевский",
+//     year: 1866,
+//   },
+//   {
+//     title: "Гаррі Поттер і філософський камінь",
+//     author: "Джоан Роулінг",
+//     year: 1997,
+//   },
+//   { title: "Мастер и Маргарита", author: "Михаил Булгаков", year: 1967 },
+//   { title: "1984", author: "Джордж Оруелл", year: 1949 },
+// ];
 
-function findBooksByAuthor(arey, author) {
- let findBook = []
- for (let book of arey) {
- if (author === book.author) {
- findBook.push(book)
-}
- }
-return findBook
-}
+// function findBooksByAuthor(arey, author) {
+//  let findBook = []
+//  for (let book of arey) {
+//  if (author === book.author) {
+//  findBook.push(book)
+// }
+//  }
+// return findBook
+// }
 
 
-const arr = findBooksByAuthor(books, "Джоан Роулінг");
-console.log(arr);
+// const arr = findBooksByAuthor(books, "Джоан Роулінг");
+// console.log(arr);
 
 //8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість".
 // Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
 
-// const products = [
+// const store1 = [
+//   { name: "Молоко", price: 2, quantity: 3 },
+//   { name: "Хліб", price: 1, quantity: 2 },
+//   { name: "Сир", price: 12, quantity: 1 },
+//   { name: "Яблука", price: 1, quantity: 5 },
+// ];
+// const store2 = [
 //   { name: "Молоко", price: 22, quantity: 3 },
 //   { name: "Хліб", price: 14, quantity: 2 },
 //   { name: "Сир", price: 120, quantity: 1 },
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
+// const store3 = [
+//   { name: "Молоко", price: 212, quantity: 3 },
+//   { name: "Хліб", price: 314, quantity: 2 },
+//   { name: "Сир", price: 1120, quantity: 1 },
+//   { name: "Яблука", price: 128, quantity: 5 },
+// ];
 
+// function calculateTotalPrice(array) {
+//     let result = 0;
+//     for (const { price, quantity } of array) {
+//         result += price * quantity
+//     }
+//     return result
+// }
+
+// const sum1 = calculateTotalPrice(store1)
+// const sum2 = calculateTotalPrice(store2)
+// const sum3 = calculateTotalPrice(store3)
+
+// console.log("store1=>", sum1)
+
+// console.log("store2=>", sum2)
+
+// console.log("store3=>", sum3)
 // 9. Припустимо, є два масиви об'єктів:
 // Необхідно створити новий масив об'єктів, що буде містити всі об'єкти з обох масивів, але без дублів. Тобто об'єкти з однаковим значенням ключа "id" повинні бути об'єднані в один об'єкт.
 // const arr1 = [{id: 1, name: 'John'}, {id: 2, name: 'Mary'}, {id: 3, name: 'Bob'}];
