@@ -109,15 +109,6 @@
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
 
-// const calculateTotalPrice = (productsArray) => {
-//   let totalPrice = 0;
-//   for (const product of productsArray) {
-//     totalPrice += product.price * product.quantity;
-//   }
-//   return totalPrice;
-// };
-// const total = calculateTotalPrice(products);
-// console.log(`Всього: ${total}`);
 // 9. Припустимо, є два масиви об'єктів:
 // Необхідно створити новий масив об'єктів, що буде містити всі об'єкти з обох масивів, але без дублів. Тобто об'єкти з однаковим значенням ключа "id" повинні бути об'єднані в один об'єкт.
 // const arr1 = [{id: 1, name: 'John'}, {id: 2, name: 'Mary'}, {id: 3, name: 'Bob'}];
