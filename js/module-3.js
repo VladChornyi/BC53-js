@@ -38,7 +38,8 @@
 // car.accelerate()
 // console.log(car.speed)
 
-//6. Створіть масив об'єктів "студентів" з властивостями "ім'я", "прізвище" та "середній бал". Напишіть функцію "findTopStudent", яка буде повертати об'єкт студента з найвищим середнім балом.
+//6. Створіть масив об'єктів "студентів" з властивостями "ім'я", "прізвище" та "середній бал".
+// Напишіть функцію "findTopStudent", яка буде повертати об'єкт студента з найвищим середнім балом.
 // const students = [
 //   { name: "Андрій", surname: "Іванов", grade: 4.5 },
 //   { name: "Олександр", surname: "Петров", grade: 3.9 },
@@ -56,7 +57,21 @@
 // }
 // console.log(findTopStudent(students));
 
-//7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor", яка буде повертати масив книг відповідного автора.
+// const findTopStudent = (studArray) => {
+//   let best_student = studArray[0];
+//   for (const student of studArray) {
+//     //console.log(student);
+//     if (student.grade > best_student.grade) {
+//       best_student = student;
+//     }
+//   }
+//   return best_student;
+// };
+// const stud = findTopStudent(students);
+// console.log(stud);
+
+//7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor",
+//яка буде повертати масив книг відповідного автора.
 // const books = [
 //   { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
 //   {
@@ -73,7 +88,19 @@
 //   { title: "1984", author: "Джордж Оруелл", year: 1949 },
 // ];
 
-//8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість". Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
+// const findBooksByAuthor = (bokksArray, author) => {
+//   const booksAuthor = [];
+//   for (const book of bokksArray) {
+//     book.author === author && booksAuthor.push(book.title);
+//   }
+//   return booksAuthor;
+// };
+
+// const arr = findBooksByAuthor(books, "Джоан Роулінг");
+// console.log(arr);
+
+//8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість".
+// Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
 
 // const products = [
 //   { name: "Молоко", price: 22, quantity: 3 },
@@ -82,6 +109,15 @@
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
 
+// const calculateTotalPrice = (productsArray) => {
+//   let totalPrice = 0;
+//   for (const product of productsArray) {
+//     totalPrice += product.price * product.quantity;
+//   }
+//   return totalPrice;
+// };
+// const total = calculateTotalPrice(products);
+// console.log(`Всього: ${total}`);
 // 9. Припустимо, є два масиви об'єктів:
 // Необхідно створити новий масив об'єктів, що буде містити всі об'єкти з обох масивів, але без дублів. Тобто об'єкти з однаковим значенням ключа "id" повинні бути об'єднані в один об'єкт.
 // const arr1 = [{id: 1, name: 'John'}, {id: 2, name: 'Mary'}, {id: 3, name: 'Bob'}];
