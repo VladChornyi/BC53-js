@@ -45,6 +45,16 @@
 //   { name: "Марія", surname: "Сидорова", grade: 4.8 },
 //   { name: "Ірина", surname: "Федорова", grade: 4.2 },
 // ];
+// function findTopStudent(students) {
+//   let maxGrade = students[0];
+//   for (const student of students) {
+//     if (student.grade > maxGrade.grade) {
+//       maxGrade = student;
+//     }
+//   }
+//   return maxGrade;
+// }
+// console.log(findTopStudent(students));
 
 //7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor", яка буде повертати масив книг відповідного автора.
 // const books = [
