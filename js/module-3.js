@@ -72,32 +72,35 @@
 
 //7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor",
 //яка буде повертати масив книг відповідного автора.
-// const books = [
-//   { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
-//   {
-//     title: "Преступление и наказание",
-//     author: "Федор Достоевский",
-//     year: 1866,
-//   },
-//   {
-//     title: "Гаррі Поттер і філософський камінь",
-//     author: "Джоан Роулінг",
-//     year: 1997,
-//   },
-//   { title: "Мастер и Маргарита", author: "Михаил Булгаков", year: 1967 },
-//   { title: "1984", author: "Джордж Оруелл", year: 1949 },
-// ];
+const books = [
+  { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
+  {
+    title: "Преступление и наказание",
+    author: "Федор Достоевский",
+    year: 1866,
+  },
+  {
+    title: "Гаррі Поттер і філософський камінь",
+    author: "Джоан Роулінг",
+    year: 1997,
+  },
+  { title: "Мастер и Маргарита", author: "Михаил Булгаков", year: 1967 },
+  { title: "1984", author: "Джордж Оруелл", year: 1949 },
+];
 
-// const findBooksByAuthor = (bokksArray, author) => {
-//   const booksAuthor = [];
-//   for (const book of bokksArray) {
-//     book.author === author && booksAuthor.push(book.title);
-//   }
-//   return booksAuthor;
-// };
+function findBooksByAuthor(arey, author) {
+ let findBook = []
+ for (let book of arey) {
+ if (author === book.author) {
+ findBook.push(book)
+}
+ }
+return findBook
+}
 
-// const arr = findBooksByAuthor(books, "Джоан Роулінг");
-// console.log(arr);
+
+const arr = findBooksByAuthor(books, "Джоан Роулінг");
+console.log(arr);
 
 //8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість".
 // Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
