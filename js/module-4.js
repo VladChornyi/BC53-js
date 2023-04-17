@@ -66,22 +66,30 @@
 // const res2 = myFunc(words, colbStr);
 
 // 4. Дано масив чисел [1, 2, 3, 4, 5]. Створіть новий масив, що містить квадрати кожного елементу вхідного масиву. Очікуваний результат: [1, 4, 9, 16, 25].
-function getNewArray(array, number) {
-  return (newArray = array.map((el) => Math.pow(el, number)));
-}
+// function getNewArray(array, number) {
+//   return (newArray = array.map((el) => Math.pow(el, number)));
+// }
 
-console.log("getNewArray :>> ", getNewArray([1, 2, 3], 5));
+// console.log("getNewArray :>> ", getNewArray([1, 2, 3], 5));
 
 // 5. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Створіть новий масив, що містить тільки об'єкти, в яких вік більше 20 років. Очікуваний результат: [{name: "John", age: 27}, {name: "Jane", age: 31}]
 
 // 6. Дано масив чисел [1, 2, 3, 4, 5]. Знайдіть перший елемент, більший за 3. Очікуваний результат: 4.
 // const arr = [1,2,3,4,5]
 // 7. Дано масив об'єктів {id: 1, values: [1, 2, 3]}, {id: 2, values: [4, 5, 6]}, {id: 3, values: [7, 8, 9]}. Створіть новий масив, що містить всі значення з масивів values кожного об'єкту, збережених в одному масиві. Очікуваний результат: [1, 2, 3, 4, 5, 6, 7, 8, 9].
-// const arr = [
-//   { id: 1, values: [1, 2, 3] },
-//   { id: 2, values: [4, 5, 6] },
-//   { id: 3, values: [7, 8, 9] },
-// ];
+
+
+const arr = [
+  { id: 1, values: [1, 2, 3] },
+  { id: 2, values: [4, 5, 6] },
+  { id: 3, values: [7, 8, 9] },
+];
+
+const flatArrey = (arr) =>arr.flatMap(el=>el.values)
+
+console.log(flatArrey(arr))
+
+
 // 8.  Дано масив чисел [2, 4, 6, 8, 10]. Перевірте, чи є кожен елемент масиву парним. Очікуваний результат: true.
 // 9. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Перевірте, чи є хоча б один об'єкт з віком менше 20 років. Очікуваний результат: true.
 // const people = [
