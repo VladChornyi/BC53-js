@@ -66,6 +66,11 @@
 // const res2 = myFunc(words, colbStr);
 
 // 4. Дано масив чисел [1, 2, 3, 4, 5]. Створіть новий масив, що містить квадрати кожного елементу вхідного масиву. Очікуваний результат: [1, 4, 9, 16, 25].
+function getNewArray(array, number) {
+  return (newArray = array.map((el) => Math.pow(el, number)));
+}
+
+console.log("getNewArray :>> ", getNewArray([1, 2, 3], 5));
 
 // 5. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Створіть новий масив, що містить тільки об'єкти, в яких вік більше 20 років. Очікуваний результат: [{name: "John", age: 27}, {name: "Jane", age: 31}]
 
