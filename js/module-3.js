@@ -24,17 +24,54 @@
 // };
 // console.log("object :>> ", box.calculateTotal());
 
-//5. Створіть об'єкт "автомобіль" з властивостями "марка", "модель" та "швидкість". Напишіть метод "accelerate", який буде збільшувати швидкість автомобіля на 10 км/год.
+//5. Створіть об'єкт "автомобіль" з властивостями "марка", "модель" та "швидкість". Напишіть метод "accelerate",
+// який буде збільшувати швидкість автомобіля на 10 км/год.
 
-//6. Створіть масив об'єктів "студентів" з властивостями "ім'я", "прізвище" та "середній бал". Напишіть функцію "findTopStudent", яка буде повертати об'єкт студента з найвищим середнім балом.
+// const car = {
+//   make: 'Whatever',
+//   model: 'That',
+//   speed: 100,
+//   accelerate() {
+//     this.speed += 10
+//     }
+// }
+// car.accelerate()
+// console.log(car.speed)
+
+//6. Створіть масив об'єктів "студентів" з властивостями "ім'я", "прізвище" та "середній бал".
+// Напишіть функцію "findTopStudent", яка буде повертати об'єкт студента з найвищим середнім балом.
 // const students = [
 //   { name: "Андрій", surname: "Іванов", grade: 4.5 },
 //   { name: "Олександр", surname: "Петров", grade: 3.9 },
 //   { name: "Марія", surname: "Сидорова", grade: 4.8 },
 //   { name: "Ірина", surname: "Федорова", grade: 4.2 },
 // ];
+// function findTopStudent(students) {
+//   let maxGrade = students[0];
+//   for (const student of students) {
+//     if (student.grade > maxGrade.grade) {
+//       maxGrade = student;
+//     }
+//   }
+//   return maxGrade;
+// }
+// console.log(findTopStudent(students));
 
-//7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor", яка буде повертати масив книг відповідного автора.
+// const findTopStudent = (studArray) => {
+//   let best_student = studArray[0];
+//   for (const student of studArray) {
+//     //console.log(student);
+//     if (student.grade > best_student.grade) {
+//       best_student = student;
+//     }
+//   }
+//   return best_student;
+// };
+// const stud = findTopStudent(students);
+// console.log(stud);
+
+//7. Створіть масив об'єктів "книг" з властивостями "назва", "автор" та "рік видання". Напишіть функцію "findBooksByAuthor",
+//яка буде повертати масив книг відповідного автора.
 // const books = [
 //   { title: "Війна і мир", author: "Лев Толстой", year: 1869 },
 //   {
@@ -51,54 +88,174 @@
 //   { title: "1984", author: "Джордж Оруелл", year: 1949 },
 // ];
 
-//8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість". Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
+// function findBooksByAuthor(arey, author) {
+//  let findBook = []
+//  for (let book of arey) {
+//  if (author === book.author) {
+//  findBook.push(book)
+// }
+//  }
+// return findBook
+// }
 
-// const products = [
+
+// const arr = findBooksByAuthor(books, "Джоан Роулінг");
+// console.log(arr);
+
+//8. Створіть масив об'єктів "продуктів" з властивостями "назва", "ціна" та "кількість".
+// Напишіть функцію "calculateTotalPrice", яка буде повертати загальну вартість всіх товарів в масиві.
+
+// const store1 = [
+//   { name: "Молоко", price: 2, quantity: 3 },
+//   { name: "Хліб", price: 1, quantity: 2 },
+//   { name: "Сир", price: 12, quantity: 1 },
+//   { name: "Яблука", price: 1, quantity: 5 },
+// ];
+// const store2 = [
 //   { name: "Молоко", price: 22, quantity: 3 },
 //   { name: "Хліб", price: 14, quantity: 2 },
 //   { name: "Сир", price: 120, quantity: 1 },
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
+// const store3 = [
+//   { name: "Молоко", price: 212, quantity: 3 },
+//   { name: "Хліб", price: 314, quantity: 2 },
+//   { name: "Сир", price: 1120, quantity: 1 },
+//   { name: "Яблука", price: 128, quantity: 5 },
+// ];
 
-
-// const object={
-//     descr: "Spacious apartment in the city center",
-//     rating: 4,
-//     price: 2153,
-//   };
-//   const object2=object
-//   object2.name="Молоко"
-
-// //   console.log(object);
-// for ( const key in object2 ){
-//     if (object.hasOwnProperty(key)){
-//         console.log(object2[key]);
+// function calculateTotalPrice(array) {
+//     let result = 0;
+//     for (const { price, quantity } of array) {
+//         result += price * quantity
 //     }
+//     return result
 // }
 
-// function fnTest(a){
+// const sum1 = calculateTotalPrice(store1)
+// const sum2 = calculateTotalPrice(store2)
+// const sum3 = calculateTotalPrice(store3)
 
+// console.log("store1=>", sum1)
 
+// console.log("store2=>", sum2)
 
-// }\
-const obj={
-      Bob:2000,
-      Kat:3000,
-      Max:5000,
-      };
-      const values
-
-// function countProps(object) {
-  
-//     let propCount = 0;
-//   const keys = Object.keys(object); 
-//     for (const key of keys) {
-     
-//         propCount += 1;
-    
+// console.log("store3=>", sum3)
+// 9. Припустимо, є два масиви об'єктів:
+// Необхідно створити новий масив об'єктів, що буде містити всі об'єкти з обох масивів, але без дублів.
+//  Тобто об'єкти з однаковим значенням ключа "id" повинні бути об'єднані в один об'єкт.
+// const arr1 = [{ id: 1, name: 'John' }, { id: 2, name: 'Mary' }, { id: 3, name: 'Bob' }];
+// const arr2 = [{ id: 2, name: 'Mary' }, { id: 4, name: 'Jane' }, { id: 5, name: 'Tom' }];
+// function uniq(arr1, arr2) {
+//     const union = [...arr1, ...arr2]
+//     const obj = {}
+//     for (const el of union) {
+//         obj[el.id] = el // у новий об'єкт додаємо ключ зі значенням об'єкту з масиву
 //     }
-  
-//     return propCount;
-   
+//     return(obj)
+// }
+// uniq(arr1, arr2);
+// console.log(uniq(arr1, arr2))
+
+// 10. Напишіть функцію createPerson(), яка приймає об'єкт параметрів з наступними властивостями:
+
+// firstName (рядок) - ім'я персони
+// lastName (рядок) - прізвище персони
+// age (число) - вік персони
+// gender (рядок) - стать персони
+// occupation (рядок) - робота персони
+// Функція повинна повернути об'єкт, що містить ці властивості. Якщо якась властивість не передається як параметр, то вона повинна мати значення за замовчуванням. Наприклад, якщо age не передається, то його значення за замовчуванням повинно бути 18.
+
+// Крім того, якщо передається додаткова властивість, яку не передбачено в списку, то вона повинна бути проігнорована.
+
+// Приклади виклику функції та їх очікувані результати:
+
+// const person1 = createPerson({
+//   firstName: 'John',
+//   lastName: 'Doe',
+//   age: 25,
+//   gender: 'male',
+//   occupation: 'developer'
+// });
+// console.log(person1);
+// Очікуваний результат: { firstName: 'John', lastName: 'Doe', age: 25, gender: 'male', occupation: 'developer' }
+
+// const person2 = createPerson({
+//   firstName: 'Jane',
+//   lastName: 'Doe',
+//   gender: 'female'
+// });
+// console.log(person2);
+// Очікуваний результат: { firstName: 'Jane', lastName: 'Doe', age: 18, gender: 'female', occupation: undefined }
+
+// const person3 = createPerson({
+//   firstName: 'Bob',
+//   lastName: 'Smith',
+//   age: 30,
+//   gender: 'male',
+//   occupation: 'teacher',
+//   hobby: 'reading'
+// });
+// console.log(person3);
+// Очікуваний результат: { firstName: 'Bob', lastName: 'Smith', age: 30, gender: 'male', occupation: 'teacher' }
+
+// 11*.Задача: є масив об'єктів, кожен об'єкт містить інформацію про певний товар: назву товару, його ціну та кількість.
+// Необхідно вивести інформацію про ті товари, ціна яких менше 50 гривень та кількість більше 5 одиниць.
+// const products = [
+//   { name: 'product 1', price: 20, quantity: 10 },
+//   { name: 'product 2', price: 30, quantity: 4 },
+//   { name: 'product 3', price: 40, quantity: 6 },
+//   { name: 'product 4', price: 50, quantity: 3 },
+//   { name: 'product 5', price: 60, quantity: 2 }
+// ];
+
+// const basket = {
+//   products: [
+//     { name: "product 1", price: 20, quantity: 10 },
+//     { name: "product 2", price: 30, quantity: 4 },
+//     { name: "product 3", price: 40, quantity: 6 },
+//     { name: "product 4", price: 50, quantity: 3 },
+//     { name: "product 5", price: 60, quantity: 2 },
+//   ],
+
+//   getProductsByPrice(maxPrice, minQuantity) {
+//     const array = [];
+//     for (const el of this.products) {
+//       if (maxPrice >= el.price && minQuantity <= el.quantity) {
+//         array.push(el);
+//       }
+//     }
+//     return array;
+//   },
+// };
+// console.log(basket.getProductsByPrice(40, 6));
+// 12**.У вас є масив об'єктів, який представляє собою список студентів, де кожен студент представлений об'єктом з властивостями "ім'я", "прізвище",
+// "рік народження" та "список курсів".Напишіть функцію, яка бере цей масив об'єктів та повертає новий масив, який містить об'єкти студентів, що належать
+// до певного списку курсів, переданого як параметр.Кожен об'єкт у новому масиві має містити тільки ім'я та прізвище студента.
+// const academia = {
+
+//   students :[
+//     { name: 'John', surname: 'Doe', birthYear: 2000, courses: ['Math', 'Physics'] },
+//     { name: 'Jane', surname: 'Doe', birthYear: 2001, courses: ['Chemistry', 'Biology'] },
+//     { name: 'Bob', surname: 'Smith', birthYear: 2002, courses: ['Math', 'Art'] },
+//     { name: 'Alice', surname: 'Johnson', birthYear: 2003, courses: ['Physics', 'Chemistry'] }
+//   ],
+//   getStudenstByCourses(cours) {
+//     const result = [];
+//     for (let i = 0; i < this.students.length; i += 1){
+//       this.students[i].courses
+//       for (let j = 0; j < this.students[i].courses.length; j += 1){
+//         if (cours.includes(this.students[i].courses[j])) {
+//           result.push({
+//             name: this.students[i].name,
+//             surname:this.students[i].surname
+//           })
+//           break;
+//         }
+//       }
+
+//     }
+//     return result
 //   }
-//   console.log(countProps(obj));
+// }
+// console.table(academia.getStudenstByCourses(['Math', 'Art']))
