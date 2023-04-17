@@ -11,18 +11,18 @@
 
 // console.log(' >> ', store.hasProduct('wqet'));
 // 4. Створіть об'єкт "кошик" зі списком товарів та їх цін. Напишіть метод "calculateTotal", який буде обчислювати загальну суму товарів у кошику.
-const box = {
-  goods: ["aple", "coconut", "banan", "cucumber"],
-  price: [25, 65, 52, 32],
-  calculateTotal() {
-    let sum = 0;
-    for (const item of this.price) {
-      sum += item;
-    }
-    return sum;
-  },
-};
-console.log("object :>> ", box.calculateTotal());
+// const box = {
+//   goods: ["aple", "coconut", "banan", "cucumber"],
+//   price: [25, 65, 52, 32],
+//   calculateTotal() {
+//     let sum = 0;
+//     for (const item of this.price) {
+//       sum += item;
+//     }
+//     return sum;
+//   },
+// };
+// console.log("object :>> ", box.calculateTotal());
 
 //5. Створіть об'єкт "автомобіль" з властивостями "марка", "модель" та "швидкість". Напишіть метод "accelerate", який буде збільшувати швидкість автомобіля на 10 км/год.
 
@@ -59,3 +59,46 @@ console.log("object :>> ", box.calculateTotal());
 //   { name: "Сир", price: 120, quantity: 1 },
 //   { name: "Яблука", price: 18, quantity: 5 },
 // ];
+
+
+// const object={
+//     descr: "Spacious apartment in the city center",
+//     rating: 4,
+//     price: 2153,
+//   };
+//   const object2=object
+//   object2.name="Молоко"
+
+// //   console.log(object);
+// for ( const key in object2 ){
+//     if (object.hasOwnProperty(key)){
+//         console.log(object2[key]);
+//     }
+// }
+
+// function fnTest(a){
+
+
+
+// }\
+const obj={
+      Bob:2000,
+      Kat:3000,
+      Max:5000,
+      };
+      const values
+
+// function countProps(object) {
+  
+//     let propCount = 0;
+//   const keys = Object.keys(object); 
+//     for (const key of keys) {
+     
+//         propCount += 1;
+    
+//     }
+  
+//     return propCount;
+   
+//   }
+//   console.log(countProps(obj));
