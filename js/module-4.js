@@ -74,14 +74,35 @@
 
 // 5. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Створіть новий масив, що містить тільки об'єкти, в яких вік більше 20 років. Очікуваний результат: [{name: "John", age: 27}, {name: "Jane", age: 31}]
 
+// const user=[
+//   {name: "John", age: 27},
+//   {name: "Jane", age: 31},
+//   {name: "Bob", age: 19}
+// ]
+// const getAge=(arr, age)=>arr.filter(el=> el.age>age)
+
+// console.log('object :>> ',getAge(user, 25));
+
 // 6. Дано масив чисел [1, 2, 3, 4, 5]. Знайдіть перший елемент, більший за 3. Очікуваний результат: 4.
 // const arr = [1,2,3,4,5]
+// const getNamber= (arr, namb)=>arr.find(el=>el>namb)
+// console.log('object :>> ',getNamber(arr, 4))
+
+
 // 7. Дано масив об'єктів {id: 1, values: [1, 2, 3]}, {id: 2, values: [4, 5, 6]}, {id: 3, values: [7, 8, 9]}. Створіть новий масив, що містить всі значення з масивів values кожного об'єкту, збережених в одному масиві. Очікуваний результат: [1, 2, 3, 4, 5, 6, 7, 8, 9].
+
+
 // const arr = [
 //   { id: 1, values: [1, 2, 3] },
 //   { id: 2, values: [4, 5, 6] },
 //   { id: 3, values: [7, 8, 9] },
 // ];
+
+// const flatArrey = (arr) =>arr.flatMap(el=>el.values)
+
+// console.log(flatArrey(arr))
+
+
 // 8.  Дано масив чисел [2, 4, 6, 8, 10]. Перевірте, чи є кожен елемент масиву парним. Очікуваний результат: true.
 // 9. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Перевірте, чи є хоча б один об'єкт з віком менше 20 років. Очікуваний результат: true.
 // const people = [
@@ -90,8 +111,25 @@
 //   { name: "Bob", age: 19 },
 // ];
 // 10. Дано масив чисел [1, 2, 3, 4, 5]. Застосуйте метод reduce для обчислення суми елементів масиву
+// const numbers = [1, 2, 3, 4, 5];
+
+// const sum = (arr) => arr.reduce((acc, el) => acc+el, 0)
+// console.log (sum(numbers))
 // 11. У вас є масив чисел, і вам потрібно знайти середнє значення цих чисел. Напишіть функцію, яка приймає масив чисел і повертає середнє значення
-// const arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
+
+const averageValue = (arr) => {
+    return arr.reduce((acc, el, index) => {
+        acc+=el
+        if (index === arr.length - 1) {
+           return acc/arr.length;
+        } 
+        return acc
+
+    }, 0)
+}
+
+console.log ( averageValue(arr))
 // 12. Відсортуйте масив чисел [4, 2, 5, 1, 3] у порядку зростання. Очікуваний результат: [1, 2, 3, 4, 5].
 
 // Відсортуйте масив рядків ["banana", "orange", "apple", "pear"] у порядку алфавіту. Очікуваний результат: ["apple", "banana", "orange", "pear"].
