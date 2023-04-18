@@ -155,6 +155,6 @@
 
 //   console.log(newObj);
 //   console.log(newArray);
-// };
+//};
 
-// noDublicatInt(array);
+//noDublicatInt(array);
