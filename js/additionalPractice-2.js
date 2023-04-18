@@ -32,36 +32,41 @@
 //4***. Напишіть функцію, яка приймає три колбеки. Перший колбек приймає масив та розмір частини, на яку потрібно розділити масив округлюючи довжину у більший бік([1,2,3,4,5],3 =>[1,2]). Другий колбек виконується над кожною частиною масиву перемноживши кожен наступний елемент на попередній,а перший на останній.Третій колбек - виконується над результатами другого колбеку і повертає суму парних елементів. Функція повинна повертати результат третього колбеку.
 
 //5*. Дано масив об'єктів з полями "id" та "name": [{id: 1, name: "John"}, {id: 2, name: "Jane"}, {id: 3, name: "Bob"}]. Напишіть функцію, яка додає новий об'єкт з вказаним "id" та "name" у масив, або замінює вже існуючий об'єкт з вказаним "id" на новий об'єкт з вказаним "name". Також напишіть функцію для видалення об'єкта з вказаним "id" з масиву.
-let data = [{ id: 1, name: "John" }, { id: 2, name: "Jane" }, { id: 3, name: "Bob" }];
-
+let data = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+  { id: 3, name: "Bob" },
+];
 
 //                        id
 const addOrEdit = (data, obj) => {
+  const objToUpd = data.find((el) => {
+    return el.id === obj.id;
+  });
 
-  const objToUpd = data.find((el) => { return el.id === obj.id })
-
-  if(objToUpd){
-    objToUpd.name = obj.name
+  if (objToUpd) {
+    objToUpd.name = obj.name;
   } else {
-    data.push(obj)
+    data.push(obj);
   }
 
-  console.log(data)
-}
+  console.log(data);
+};
 
 const delObj = (data, id) => {
-  
-  const index = data.findIndex((el) => { return el.id === id })
+  const index = data.findIndex((el) => {
+    return el.id === id;
+  });
 
-  if(index === -1){
-    return `Element ${id} is not defined`
-  } data.splice(index, 1)
-  console.log(data)
+  if (index === -1) {
+    return `Element ${id} is not defined`;
+  }
+  data.splice(index, 1);
+  console.log(data);
+};
 
-}
-
-addOrEdit(data, {id: 211, name: 'Nikita'})
-console.log(delObj(data, 2))
+addOrEdit(data, { id: 211, name: "Nikita" });
+console.log(delObj(data, 2));
 
 // // Додавання нового об'єкту
 // addOrUpdate(data, { id: 4, name: "Mike" });
@@ -76,46 +81,57 @@ console.log(delObj(data, 2))
 // console.log(data); // [{id: 1, name: "John"}, {id: 2, name: "Kate"}, {id: 4, name: "Mike"}]
 
 //6*. Дано масив об'єктів користувачів:
-const users = [
-  { name: "John", age: 27, gender: "male" },
-  { name: "Jane", age: 31, gender: "female" },
-  { name: "Bob", age: 19, gender: "male" },
-  { name: "Alice", age: 25, gender: "female" },
-];
+// const users = [
+//   { name: "John", age: 27, gender: "male" },
+//   { name: "Jane", age: 31, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Alice", age: 25, gender: "female" },
+// ];
 
-const students = [
-  { name: "John", age: 18, gender: "male" },
-  { name: "Jane", age: 20, gender: "female" },
-  { name: "Bob", age: 19, gender: "male" },
-  { name: "Alice", age: 25, gender: "female" },
-];
+// const students = [
+//   { name: "John", age: 18, gender: "male" },
+//   { name: "Jane", age: 20, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Alice", age: 25, gender: "female" },
+// ];
 
-const getUserInfo = (users) => {
-  let intResult = [];
-  users.forEach((user) => {
-    intResult.push(`${user.name}, ${user.age}, ${user.gender}`);
-  });
-  return intResult;
-};
-getUserInfo(users);
+// const getUserInfo = (users) => {
+//   let intResult = [];
+//   users.forEach((user) => {
+//     intResult.push(`${user.name}, ${user.age}, ${user.gender}`);
+//   });
+//   return intResult;
+// };
+// getUserInfo(users);
 
-const getUserInfoMap = (users) => {
-  return users.map((user) => `${user.name}, ${user.age}, ${user.gender}`);
-};
+// const getUserInfoMap = (users) => {
+//   return users.map((user) => `${user.name}, ${user.age}, ${user.gender}`);
+// };
 
-// Використовуючи метод forEach, створіть новий масив, який буде містити інформацію про кожного користувача у вигляді рядків з його іменем, віком та статтю у форматі "Ім'я, вік, стать" (наприклад, "John, 27, male"). Результат повинен виглядати так:
+// // Використовуючи метод forEach, створіть новий масив, який буде містити інформацію про кожного користувача у вигляді рядків з його іменем, віком та статтю у форматі "Ім'я, вік, стать" (наприклад, "John, 27, male"). Результат повинен виглядати так:
 // [  "John, 27, male",  "Jane, 31, female",  "Bob, 19, male",  "Alice, 25, female"]
 
 // 7*.Дано масив об'єктів користувачів:
 
 // const users = [
-//   { name: 'John', age: 25, gender: 'male' },
-//   { name: 'Jane', age: 31, gender: 'female' },
-//   { name: 'Bob', age: 19, gender: 'male' },
-//   { name: 'Mary', age: 24, gender: 'female' },
-//   { name: 'Mike', age: 40, gender: 'male' }
+//   { name: "John", age: 25, gender: "male" },
+//   { name: "Jane", age: 31, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Mary", age: 26, gender: "female" },
+//   { name: "Michel", age: 40, gender: "female" },
 // ];
-// Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+// // Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+
+// const listOfFUsers = (users) =>
+//   users
+//     .filter((user) => user.gender === "female" && user.age > 25)
+//     .map((user) => user.name)
+//     .sort((firstName, secondName) => firstName - secondName);
+
+// const res = listOfFUsers(users);
+
+// console.log("res :>> ", res);
+
 const orders = [
   {
     id: 1,
@@ -234,42 +250,42 @@ const orders = [
 //  про топ - 5 товарів за кількістю продажів, та загальну кількість проданих одиниць кожного товару.
 // //
 
-const firstUsers = (array) => {
-  const orders = [];
+// const firstUsers = (array) => {
+//   const orders = [];
 
-  for (let i = 0; i < array.length; i += 1) {
-    const order = {};
-    order.items = [];
-    if (order.length === 0) {
-      order.name = array[i].name;
-      order.total = array[i].total;
-      order.items = array[i].items;
+//   for (let i = 0; i < array.length; i += 1) {
+//     const order = {};
+//     order.items = [];
+//     if (order.length === 0) {
+//       order.name = array[i].name;
+//       order.total = array[i].total;
+//       order.items = array[i].items;
 
-      orders.push(order);
-    } else {
-      let userPocupa = false;
-      for (let i = 0; i < orders.length; i += 1) {
-        if (orders.name === array[i].name) {
-          userPocupa = true;
-          orders[i].total += array[i].total;
-          orders[i].items.push(array[i].items);
-        }
-      }
-      if (!userPocupa) {
-        order.name = array[i].name;
-        order.total = array[i].total;
-        order.items = array[i].items;
+//       orders.push(order);
+//     } else {
+//       let userPocupa = false;
+//       for (let i = 0; i < orders.length; i += 1) {
+//         if (orders.name === array[i].name) {
+//           userPocupa = true;
+//           orders[i].total += array[i].total;
+//           orders[i].items.push(array[i].items);
+//         }
+//       }
+//       if (!userPocupa) {
+//         order.name = array[i].name;
+//         order.total = array[i].total;
+//         order.items = array[i].items;
 
-        orders.push(order);
-      }
-    }
-  }
+//         orders.push(order);
+//       }
+//     }
+//   }
 
-  return orders.sort((a, b) => b.total - a.total).slice(0, 5);
-};
+//   return orders.sort((a, b) => b.total - a.total).slice(0, 5);
+// };
 
-const result_users = firstUsers(orders);
-console.log(result_users);
+// const result_users = firstUsers(orders);
+// console.log(result_users);
 
 // const topUsersClient = (array, number) => {
 //   const topClients = [];
