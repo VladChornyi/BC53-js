@@ -18,18 +18,14 @@
 
 // console.log(calculateTotalPrice(products))
 
-
-
-
 // 2*. Дано функцію, яка приймає будь-яку кількість числових аргументів. Необхідно застосувати рест оператор, щоб обчислити середнє арифметичне значення всіх переданих числових аргументів. Функція повинна повертати отримане середнє значення.
 
-function getAvereje(...args){
-  const result = args.reduce((acc,el)=> acc+=el ,0)
-   return result/args.length
-   
-}
-console.log(getAvereje(15, 58, 5, 9));
+// function getAvereje(...args){
+//   const result = args.reduce((acc,el)=> acc+=el ,0)
+//    return result/args.length
 
+// }
+// console.log(getAvereje(15, 58, 5, 9));
 
 //3**. Нехай є масив чисел. Напишіть функцію, яка приймає масив та два колбеки. Перший колбек виконується над усіма елементами масиву перемножуючи їх на 2, другий - над елементами, ділить елементи, що можна розділити без залишку, на 5, та повертає суму усіх елементів масиву. Результат першого колбеку повинен передаватися другому колбеку. Функція повинна повертати результат другого колбеку.
 
@@ -51,12 +47,33 @@ console.log(getAvereje(15, 58, 5, 9));
 // console.log(data); // [{id: 1, name: "John"}, {id: 2, name: "Kate"}, {id: 4, name: "Mike"}]
 
 //6*. Дано масив об'єктів користувачів:
-// const users = [
-//   { name: 'John', age: 27, gender: 'male' },
-//   { name: 'Jane', age: 31, gender: 'female' },
-//   { name: 'Bob', age: 19, gender: 'male' },
-//   { name: 'Alice', age: 25, gender: 'female' }
-// ];
+const users = [
+  { name: "John", age: 27, gender: "male" },
+  { name: "Jane", age: 31, gender: "female" },
+  { name: "Bob", age: 19, gender: "male" },
+  { name: "Alice", age: 25, gender: "female" },
+];
+
+const students = [
+  { name: "John", age: 18, gender: "male" },
+  { name: "Jane", age: 20, gender: "female" },
+  { name: "Bob", age: 19, gender: "male" },
+  { name: "Alice", age: 25, gender: "female" },
+];
+
+const getUserInfo = (users) => {
+  let intResult = [];
+  users.forEach((user) => {
+    intResult.push(`${user.name}, ${user.age}, ${user.gender}`);
+  });
+  return intResult;
+};
+getUserInfo(users);
+
+const getUserInfoMap = (users) => {
+  return users.map((user) => `${user.name}, ${user.age}, ${user.gender}`);
+};
+
 // Використовуючи метод forEach, створіть новий масив, який буде містити інформацію про кожного користувача у вигляді рядків з його іменем, віком та статтю у форматі "Ім'я, вік, стать" (наприклад, "John, 27, male"). Результат повинен виглядати так:
 // [  "John, 27, male",  "Jane, 31, female",  "Bob, 19, male",  "Alice, 25, female"]
 
