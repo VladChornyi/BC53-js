@@ -32,7 +32,36 @@
 //4***. Напишіть функцію, яка приймає три колбеки. Перший колбек приймає масив та розмір частини, на яку потрібно розділити масив округлюючи довжину у більший бік([1,2,3,4,5],3 =>[1,2]). Другий колбек виконується над кожною частиною масиву перемноживши кожен наступний елемент на попередній,а перший на останній.Третій колбек - виконується над результатами другого колбеку і повертає суму парних елементів. Функція повинна повертати результат третього колбеку.
 
 //5*. Дано масив об'єктів з полями "id" та "name": [{id: 1, name: "John"}, {id: 2, name: "Jane"}, {id: 3, name: "Bob"}]. Напишіть функцію, яка додає новий об'єкт з вказаним "id" та "name" у масив, або замінює вже існуючий об'єкт з вказаним "id" на новий об'єкт з вказаним "name". Також напишіть функцію для видалення об'єкта з вказаним "id" з масиву.
-// let data = [{ id: 1, name: "John" }, { id: 2, name: "Jane" }, { id: 3, name: "Bob" }];
+let data = [{ id: 1, name: "John" }, { id: 2, name: "Jane" }, { id: 3, name: "Bob" }];
+
+
+//                        id
+const addOrEdit = (data, obj) => {
+
+  const objToUpd = data.find((el) => { return el.id === obj.id })
+
+  if(objToUpd){
+    objToUpd.name = obj.name
+  } else {
+    data.push(obj)
+  }
+
+  console.log(data)
+}
+
+const delObj = (data, id) => {
+  
+  const index = data.findIndex((el) => { return el.id === id })
+
+  if(index === -1){
+    return `Element ${id} is not defined`
+  } data.splice(index, 1)
+  console.log(data)
+
+}
+
+addOrEdit(data, {id: 211, name: 'Nikita'})
+console.log(delObj(data, 2))
 
 // // Додавання нового об'єкту
 // addOrUpdate(data, { id: 4, name: "Mike" });
