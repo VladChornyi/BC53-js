@@ -1,11 +1,25 @@
 // 1*. Дано масив об'єктів products, який містить інформацію про товари в магазині:
-// const products = [
-//   { name: "Product 1", price: 10, quantity: 2 },
-//   { name: "Product 2", price: 5, quantity: 5 },
-//   { name: "Product 3", price: 15, quantity: 1 },
-//   { name: "Product 4", price: 20, quantity: 3 }
-// ];
+const products = [
+  { name: "Product 1", price: 10, quantity: 2 },
+  { name: "Product 2", price: 5, quantity: 5 },
+  { name: "Product 3", price: 15, quantity: 1 },
+  { name: "Product 4", price: 20, quantity: 3 }
+];
 // Напишіть функцію calculateTotalPrice, яка приймає масив products і повертає загальну вартість всіх товарів в магазині.
+
+function calculateTotalPrice(arr){
+const totalPrice= arr.reduce((acc,el)=>{
+acc+=el.price*el.quantity
+
+return acc
+},0)
+return totalPrice
+}
+
+console.log(calculateTotalPrice(products))
+
+
+
 
 // 2*. Дано функцію, яка приймає будь-яку кількість числових аргументів. Необхідно застосувати рест оператор, щоб обчислити середнє арифметичне значення всіх переданих числових аргументів. Функція повинна повертати отримане середнє значення.
 
