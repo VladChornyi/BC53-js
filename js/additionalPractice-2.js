@@ -3,20 +3,20 @@
 //   { name: "Product 1", price: 10, quantity: 2 },
 //   { name: "Product 2", price: 5, quantity: 5 },
 //   { name: "Product 3", price: 15, quantity: 1 },
-//   { name: "Product 4", price: 20, quantity: 3 }
+//   { name: "Product 4", price: 20, quantity: 3 },
 // ];
 // // Напишіть функцію calculateTotalPrice, яка приймає масив products і повертає загальну вартість всіх товарів в магазині.
 
-// function calculateTotalPrice(arr){
-// const totalPrice= arr.reduce((acc,el)=>{
-// acc+=el.price*el.quantity
+// function calculateTotalPrice(arr) {
+//   const totalPrice = arr.reduce((acc, el) => {
+//     acc += el.price * el.quantity;
 
-// return acc
-// },0)
-// return totalPrice
+//     return acc;
+//   }, 0);
+//   return totalPrice;
 // }
 
-// console.log(calculateTotalPrice(products))
+// console.log(calculateTotalPrice(products));
 
 // 2*. Дано функцію, яка приймає будь-яку кількість числових аргументів. Необхідно застосувати рест оператор, щоб обчислити середнє арифметичне значення всіх переданих числових аргументів. Функція повинна повертати отримане середнє значення.
 
@@ -81,46 +81,57 @@ console.log(delObj(data, 2));
 // console.log(data); // [{id: 1, name: "John"}, {id: 2, name: "Kate"}, {id: 4, name: "Mike"}]
 
 //6*. Дано масив об'єктів користувачів:
-const users = [
-  { name: "John", age: 27, gender: "male" },
-  { name: "Jane", age: 31, gender: "female" },
-  { name: "Bob", age: 19, gender: "male" },
-  { name: "Alice", age: 25, gender: "female" },
-];
+// const users = [
+//   { name: "John", age: 27, gender: "male" },
+//   { name: "Jane", age: 31, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Alice", age: 25, gender: "female" },
+// ];
 
-const students = [
-  { name: "John", age: 18, gender: "male" },
-  { name: "Jane", age: 20, gender: "female" },
-  { name: "Bob", age: 19, gender: "male" },
-  { name: "Alice", age: 25, gender: "female" },
-];
+// const students = [
+//   { name: "John", age: 18, gender: "male" },
+//   { name: "Jane", age: 20, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Alice", age: 25, gender: "female" },
+// ];
 
-const getUserInfo = (users) => {
-  let intResult = [];
-  users.forEach((user) => {
-    intResult.push(`${user.name}, ${user.age}, ${user.gender}`);
-  });
-  return intResult;
-};
-getUserInfo(users);
+// const getUserInfo = (users) => {
+//   let intResult = [];
+//   users.forEach((user) => {
+//     intResult.push(`${user.name}, ${user.age}, ${user.gender}`);
+//   });
+//   return intResult;
+// };
+// getUserInfo(users);
 
-const getUserInfoMap = (users) => {
-  return users.map((user) => `${user.name}, ${user.age}, ${user.gender}`);
-};
+// const getUserInfoMap = (users) => {
+//   return users.map((user) => `${user.name}, ${user.age}, ${user.gender}`);
+// };
 
-// Використовуючи метод forEach, створіть новий масив, який буде містити інформацію про кожного користувача у вигляді рядків з його іменем, віком та статтю у форматі "Ім'я, вік, стать" (наприклад, "John, 27, male"). Результат повинен виглядати так:
+// // Використовуючи метод forEach, створіть новий масив, який буде містити інформацію про кожного користувача у вигляді рядків з його іменем, віком та статтю у форматі "Ім'я, вік, стать" (наприклад, "John, 27, male"). Результат повинен виглядати так:
 // [  "John, 27, male",  "Jane, 31, female",  "Bob, 19, male",  "Alice, 25, female"]
 
 // 7*.Дано масив об'єктів користувачів:
 
 // const users = [
-//   { name: 'John', age: 25, gender: 'male' },
-//   { name: 'Jane', age: 31, gender: 'female' },
-//   { name: 'Bob', age: 19, gender: 'male' },
-//   { name: 'Mary', age: 24, gender: 'female' },
-//   { name: 'Mike', age: 40, gender: 'male' }
+//   { name: "John", age: 25, gender: "male" },
+//   { name: "Jane", age: 31, gender: "female" },
+//   { name: "Bob", age: 19, gender: "male" },
+//   { name: "Mary", age: 26, gender: "female" },
+//   { name: "Michel", age: 40, gender: "female" },
 // ];
-// Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+// // Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+
+// const listOfFUsers = (users) =>
+//   users
+//     .filter((user) => user.gender === "female" && user.age > 25)
+//     .map((user) => user.name)
+//     .sort((firstName, secondName) => firstName - secondName);
+
+// const res = listOfFUsers(users);
+
+// console.log("res :>> ", res);
+
 // const orders = [
 //   {
 //     id: 1,
@@ -231,6 +242,117 @@ const getUserInfoMap = (users) => {
 //     items: [{ id: 1, name: "book", quantity: 1 }],
 //   },
 // ];
+// Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+const orders = [
+  {
+    id: 1,
+    name: "John",
+    date: "2022-01-01",
+    total: 50,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 2 },
+      { id: 2, name: "pen", quantity: 5 },
+    ],
+  },
+  {
+    id: 2,
+    name: "Jane",
+    date: "2022-02-03",
+    total: 20,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 3, name: "pencil", quantity: 3 },
+    ],
+  },
+  {
+    id: 3,
+    name: "Bob",
+    date: "2022-03-05",
+    total: 100,
+    paid: false,
+    items: [
+      { id: 2, name: "pen", quantity: 10 },
+      { id: 4, name: "notebook", quantity: 1 },
+    ],
+  },
+  {
+    id: 4,
+    name: "Alice",
+    date: "2022-04-07",
+    total: 70,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 4 },
+      { id: 4, name: "notebook", quantity: 2 },
+    ],
+  },
+  {
+    id: 5,
+    name: "Jim",
+    date: "2022-05-09",
+    total: 30,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 2, name: "pen", quantity: 2 },
+    ],
+  },
+  {
+    id: 6,
+    name: "Sara",
+    date: "2022-06-11",
+    total: 80,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 6 },
+      { id: 4, name: "notebook", quantity: 3 },
+    ],
+  },
+  {
+    id: 7,
+    name: "John",
+    date: "2022-01-03",
+    total: 90,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 2 },
+      { id: 2, name: "pen", quantity: 5 },
+      { id: 1, name: "book", quantity: 1 },
+    ],
+  },
+  {
+    id: 8,
+    name: "Jim",
+    date: "2022-08-09",
+    total: 30,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 4, name: "notebook", quantity: 2 },
+    ],
+  },
+  {
+    id: 9,
+    name: "Jim",
+    date: "2022-06-11",
+    total: 45,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 1 },
+      { id: 2, name: "pen", quantity: 2 },
+    ],
+  },
+  {
+    id: 10,
+    name: "John",
+    date: "2022-08-03",
+    total: 90,
+    paid: true,
+    items: [{ id: 1, name: "book", quantity: 1 }],
+  },
+];
 
 // // 8***. Задача: дано масив об'єктів, що представляють замовлення в інтернет-магазині.
 // // Кожен об'єкт містить поля з номером замовлення, ім'я клієнта, датою замовлення, сумою замовлення та
