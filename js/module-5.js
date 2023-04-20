@@ -5,7 +5,7 @@ const user = {
   age: 30,
   email: "johndoe@example.com",
   info() {
-    console.log(this);
+   console.log(this);
   },
   modify(parameter, value) {
     if (parameter !== "firstName" && parameter !== "lastName") {
@@ -51,55 +51,65 @@ user.addProperty("friends", [
   }),
 ]);
 
-console.log(user);
+// console.log(user);
 
 // 4. Викликати метод user.info() таким чином, щоб він вивів результатом  ({name: 'Bob', lactName: 'Lasso',age: 50, email: 'BodLasso@gmail.com'})
+
+const obj = {name: 'Bob', lactName: 'Lasso',age: 50, email: 'BodLasso@gmail.com'}
+
+user.info.apply(obj)
+
+
 // 5. створіть об'єкт "Кошик", який буде мати список продуктів та методи для додавання і видалення продуктів. Також створіть об'єкт "Замовлення", який буде мати метод для отримання списку продуктів з кошика та оформлення замовлення. Зв'яжіть метод оформлення замовлення з методом "Оформити замовлення" об'єкта "Кошик" за допомогою bind.
 
-// const cart = {
-//   products: [],
+const cart = {
+  products: [],
 
-//   addProduct(product) {
-//
-//     console.log(`Product ${product} added to cart`);
-//   },
+  addProduct(product) {
+    this.products.push(product)
+    console.log(`Product ${product} added to cart`);
+  },
 
-//   removeProduct(product) {
-//
-//   },
+  removeProduct(product) {
+    const indexProd = this.products.indexOf(product)
+    indexProd === -1 ? alert(`Продукта з назвою ${product} немае у кошику`) : this.products.splice(indexProd,1)
+  },
 
-//   checkout() {
-//     console.log(`Ordering products: ${this.products.join(", ")}`);
-//   }
-// };
+  checkout() {
+    console.log(`Ordering products: ${this.products.join(", ")}`);
+  }
+};
 
-// const order = {
-//   checkoutCart: null,
+const order = {
+  checkoutCart: null,
 
-//   placeOrder() {
-//     if (this.checkoutCart) {
-//       console.log("Placing order...");
-//       this.checkoutCart();
-//       console.log("Order placed successfully!");
-//     } else {
-//       console.log("No items in cart to order");
-//     }
-//   }
-// };
+  placeOrder() {
+    if (this.checkoutCart) {
+      console.log("Placing order...");
+      this.checkoutCart();
+      console.log("Order placed successfully!");
+    } else {
+      console.log("No items in cart to order");
+    }
+  }
+};
 
-// cart.addProduct("Apple");
-// cart.addProduct("Orange");
-// cart.addProduct("Banana");
+order.checkoutCart = cart.checkout.bind(cart)
+console.log(order.checkoutCart === cart.checkout);
+cart.addProduct("Apple");
+cart.addProduct("Orange");
+cart.addProduct("Banana");
 
-// order.placeOrder();
+order.placeOrder();
 // Ordering products: Apple, Orange, Banana
 // Placing order...
 // Ordering products: Apple, Orange, Banana
 // Order placed successfully!
+console.log(cart.products)
+cart.removeProduct("Orange");
+console.log(cart.products)
 
-// cart.removeProduct("Orange");
-
-// order.placeOrder();
+order.placeOrder();
 // Ordering products: Apple, Banana
 // Placing order...
 // Ordering products: Apple, Banana
