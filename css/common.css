@@ -55,3 +55,6 @@ button {
 .odd {
   background-color: #ffeb3b;
 }
+.active {
+  color: red;
+}
