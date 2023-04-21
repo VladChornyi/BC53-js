@@ -119,17 +119,17 @@
 const arr = [1, 2, 3, 4, 5];
 
 const averageValue = (arr) => {
-    return arr.reduce((acc, el, index) => {
-        acc+=el
-        if (index === arr.length - 1) {
-           return acc/arr.length;
-        } 
-        return acc
+  return arr.reduce((acc, el, index) => {
+    acc += el
+    if (index === arr.length - 1) {
+      return acc / arr.length;
+    }
+    return acc
 
-    }, 0)
+  }, 0)
 }
 
-console.log ( averageValue(arr))
+console.log(averageValue(arr))
 // 12. Відсортуйте масив чисел [4, 2, 5, 1, 3] у порядку зростання. Очікуваний результат: [1, 2, 3, 4, 5].
 
 // Відсортуйте масив рядків ["banana", "orange", "apple", "pear"] у порядку алфавіту. Очікуваний результат: ["apple", "banana", "orange", "pear"].
