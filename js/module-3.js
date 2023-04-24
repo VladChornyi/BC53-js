@@ -259,20 +259,3 @@
 //   }
 // }
 // console.table(academia.getStudenstByCourses(['Math', 'Art']))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//(()=>{})
-//[25, 65, 52, 32]

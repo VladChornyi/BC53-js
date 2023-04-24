@@ -92,9 +92,6 @@
 // const pal1 = "Я несу гусеня";
 // const pal2 = "А роза упала на лапу Азора";
 
-
-
-//console.log (calculator.sum(5,10))
 // const yesNoPalindrom = (message) => {
 //   const nomal = message.toLowerCase().split(" ").join("");
 //   //   const str = message.toLowerCase().replaceAll(" ", "");
@@ -140,9 +137,3 @@
 // нормалізуємо текст
 // порівнюємо
 // виводимо результат
-
-function checkIfCanAccessContent(subType) {
-  const canAccessContent = (subType = "pro" || subType = "vip");
-
-  return canAccessContent;
-}
