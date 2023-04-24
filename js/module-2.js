@@ -158,3 +158,42 @@
 //};
 
 //noDublicatInt(array);
+
+
+
+const bookShelf = {
+  books: ["The last kingdom", "The guardian of dreams"],
+  getBooks() {
+    return "Returning all books";
+  },
+  addBook(bookName) {
+    return `Adding book ${bookName}`;
+  },
+  removeBook(bookName) {
+    
+const bookIndex = this.books.indexOf(bookName);
+    
+   
+    if (bookIndex !== -1) {
+      this.books.splice(bookIndex, 1);
+      return `Deleting book ${bookName}`;
+    }
+    
+   
+    return `Book ${bookName} not found`;
+  },
+  
+  updateBook(oldName, newName) {
+    // Find the index of the old book name in the books array
+    const bookIndex = this.books.indexOf(oldName);
+    
+    
+    if (bookIndex !== -1) {
+      this.books[bookIndex] = newName;
+      return `Updating book ${oldName} to ${newName}`;
+    }
+    
+    
+    return `Book ${oldName} not found`;
+  }
+};
