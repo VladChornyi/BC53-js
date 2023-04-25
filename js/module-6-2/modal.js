@@ -22,28 +22,41 @@ login_btn.addEventListener("click", handleFormOpen);
 cancle_btn.addEventListener("click", handleFormClose);
 closeModal_btn.addEventListener("click", handleFormClose);
 
-form.addEventListener('submit', (e)=>{
-    e.preventDefault()
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const { name, password, remember} = e.target.elements
+  const { name, password, remember } = e.target.elements;
 
-    const nameValue = name.value
-    const passwordValue = password.value
-    const rememberValue = remember.checked
+  const nameValue = name.value;
+  const passwordValue = password.value;
+  const rememberValue = remember.checked;
 
-    console.log(nameValue, passwordValue, rememberValue);
+  console.log(nameValue, passwordValue, rememberValue);
 
-    e.target.reset()
-    handleFormClose()
-})
+  e.target.reset();
+  handleFormClose();
+});
 
+const onEscapeClose = (e) => {
+  console.log(12);
+  if (e.key === "Escape") {
+    handleFormClose();
+  }
+};
 
 // function which you should add to event listener as callback
 function handleFormOpen() {
-    modal.style.display = "block";
+  modal.style.display = "block";
+  document.addEventListener("keydown", onEscapeClose);
 }
 function handleFormClose() {
   modal.style.display = "none";
+  document.removeEventListener("keydown", onEscapeClose);
 }
 function handleFormSubmit() {}
 
+modal.addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    handleFormClose();
+  }
+});
