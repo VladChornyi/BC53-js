@@ -361,42 +361,42 @@ const orders = [
 // //  про топ - 5 товарів за кількістю продажів, та загальну кількість проданих одиниць кожного товару.
 // // //
 
-// const firstUsers = (array) => {
-//   const orders = [];
+const firstUsers = (array) => {
+  const orders = [];
 
-//   for (let i = 0; i < array.length; i += 1) {
-//     const order = {};
-//     order.items = [];
-//     if (order.length === 0) {
-//       order.name = array[i].name;
-//       order.total = array[i].total;
-//       order.items = array[i].items;
+  for (let i = 0; i < array.length; i += 1) {
+    const order = {};
+    order.items = [];
+    if (order.length === 0) {
+      order.name = array[i].name;
+      order.total = array[i].total;
+      order.items = array[i].items;
 
-//       orders.push(order);
-//     } else {
-//       let userPocupa = false;
-//       for (let i = 0; i < orders.length; i += 1) {
-//         if (orders.name === array[i].name) {
-//           userPocupa = true;
-//           orders[i].total += array[i].total;
-//           orders[i].items.push(array[i].items);
-//         }
-//       }
-//       if (!userPocupa) {
-//         order.name = array[i].name;
-//         order.total = array[i].total;
-//         order.items = array[i].items;
+      orders.push(order);
+    } else {
+      let userPocupa = false;
+      for (let i = 0; i < orders.length; i += 1) {
+        if (orders.name === array[i].name) {
+          userPocupa = true;
+          orders[i].total += array[i].total;
+          orders[i].items.push(array[i].items);
+        }
+      }
+      if (!userPocupa) {
+        order.name = array[i].name;
+        order.total = array[i].total;
+        order.items = array[i].items;
 
-//         orders.push(order);
-//       }
-//     }
-//   }
+        orders.push(order);
+      }
+    }
+  }
 
-//   return orders.sort((a, b) => b.total - a.total).slice(0, 5);
-// };
+  return orders.sort((a, b) => b.total - a.total).slice(0, 5);
+};
 
-// const result_users = firstUsers(orders);
-// console.log(result_users);
+const result_users = firstUsers(orders);
+console.log(result_users);
 
 // const topUsersClient = (array, number) => {
 //   const topClients = [];
@@ -579,14 +579,16 @@ const cars = [
   },
 ];
 
-// const myMake = (arr) => {
-//   const markAvto = arr.map((car) => {
-//     if (car.model === "Explorer") {
-//       return car
-//     }
-//   });
-//   return markAvto;
-// };
+const myMake = (arr) => {
+  const markAvto = arr.reduce((acc, car) => {
+    if (car.make === "Ford") {
+      console.log(car);
+      acc.push(car);
+    }
+    return acc;
+  }, []);
+  return markAvto;
+};
 
-// const result = myMake(cars);
-// console.log(result);
+const result = myMake(cars);
+console.log(result);
