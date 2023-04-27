@@ -1,8 +1,9 @@
 import { countries } from "./countries.js";
 // console.log(countries);
+const input = document.querySelector("#search-box");
 const itemsList = document.querySelector(".country-list");
 const error = document.querySelector(".output-error");
-const handleInput = (array, value) => {};
+
 const rendCountrList = (array) => {
   const markup = array
     .map((el) => {
@@ -14,7 +15,7 @@ const rendCountrList = (array) => {
     .join(" ");
   itemsList.innerHTML = markup;
 };
-rendCountrList(countries);
+
 const rendSingleCountry = (country) => {
   const countryInfo = `<li>
     <div class="previewCard">
@@ -29,9 +30,27 @@ const rendSingleCountry = (country) => {
   itemsList.innerHTML = countryInfo;
 };
 
-rendSingleCountry(countries[1]);
-
 const errorMessage = (name) => {
   error.textContent = `Oops, there is no country with name ${name}.`;
 };
-errorMessage();
+
+const handleInput = (event) => {
+  const { value } = event.target;
+  if (!value.trim()) {
+    itemsList.innerHTML = "";
+  }
+  const filtredCountries = countries.filter((el) => {
+    return el.name.toLowerCase().includes(value.toLowerCase().trim());
+  });
+  if (filtredCountries.length === 0) {
+    return errorMessage(value);
+  }
+  if (filtredCountries.length === 1) {
+    return rendSingleCountry(filtredCountries[0]);
+  }
+  if (filtredCountries.length > 1) {
+    return rendCountrList(filtredCountries);
+  }
+};
+
+input.addEventListener("input", _.debounce(handleInput, 800));
