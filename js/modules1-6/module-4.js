@@ -88,9 +88,7 @@
 // const getNamber= (arr, namb)=>arr.find(el=>el>namb)
 // console.log('object :>> ',getNamber(arr, 4))
 
-
 // 7. Дано масив об'єктів {id: 1, values: [1, 2, 3]}, {id: 2, values: [4, 5, 6]}, {id: 3, values: [7, 8, 9]}. Створіть новий масив, що містить всі значення з масивів values кожного об'єкту, збережених в одному масиві. Очікуваний результат: [1, 2, 3, 4, 5, 6, 7, 8, 9].
-
 
 // const arr = [
 //   { id: 1, values: [1, 2, 3] },
@@ -101,7 +99,6 @@
 // const flatArrey = (arr) =>arr.flatMap(el=>el.values)
 
 // console.log(flatArrey(arr))
-
 
 // 8.  Дано масив чисел [2, 4, 6, 8, 10]. Перевірте, чи є кожен елемент масиву парним. Очікуваний результат: true.
 // 9. Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Перевірте, чи є хоча б один об'єкт з віком менше 20 років. Очікуваний результат: true.
@@ -120,16 +117,15 @@ const arr = [1, 2, 3, 4, 5];
 
 const averageValue = (arr) => {
   return arr.reduce((acc, el, index) => {
-    acc += el
+    acc += el;
     if (index === arr.length - 1) {
       return acc / arr.length;
     }
-    return acc
+    return acc;
+  }, 0);
+};
 
-  }, 0)
-}
-
-console.log(averageValue(arr))
+console.log(averageValue(arr));
 // 12. Відсортуйте масив чисел [4, 2, 5, 1, 3] у порядку зростання. Очікуваний результат: [1, 2, 3, 4, 5].
 
 // Відсортуйте масив рядків ["banana", "orange", "apple", "pear"] у порядку алфавіту. Очікуваний результат: ["apple", "banana", "orange", "pear"].
