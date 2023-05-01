@@ -1,3 +1,5 @@
+const COUNTER_KEY = 'localCounter'
+
 const decreaseBtn = document.querySelector('[data-action="decrease"]');
 const resetBtn = document.querySelector('[data-action="reset"]');
 const increasetBtn = document.querySelector('[data-action="increase"]');
@@ -7,20 +9,43 @@ const controlsDiv = document.querySelector(".counter-controls");
 const saveDiv = document.querySelector(".save");
 const counterDiv = document.querySelector(".counter-value");
 
-// saveDiv.addEventListener("click", saveHandler);
-// const saveHandler = (ev) => {};
+
+
+let currentCounter = Number(counterDiv.textContent);
 const controlsHandler = (ev) => {
-  let afterClick = Number(counterDiv.textContent);
   if (ev.target.closest('[data-action="decrease"]') === decreaseBtn) {
-    afterClick -= 1;
+    currentCounter -= 1;
   }
   if (ev.target.closest('[data-action="increase"]') === increasetBtn) {
-    afterClick += 1;
+    currentCounter += 1;
   }
   if (ev.target.closest('[data-action="reset"]') === resetBtn) {
-    afterClick = 0;
+    currentCounter = 0;
   }
-  counterDiv.textContent = afterClick;
+  counterDiv.textContent = currentCounter;
 };
-
 controlsDiv.addEventListener("click", controlsHandler);
+
+
+const saveHandler = (ev) => {
+
+  if (ev.target.closest('[data-action="save"]')){
+    localStorage.setItem(COUNTER_KEY, currentCounter)
+  } 
+  if (ev.target.closest('[data-action="clear-save"]')){
+    localStorage.removeItem(COUNTER_KEY)
+  }
+
+
+};
+saveDiv.addEventListener("click", saveHandler);
+
+function getItemLocalStorage (){
+  const localValue = localStorage.getItem(COUNTER_KEY)
+  if (localValue){
+    currentCounter = Number(localValue)
+    counterDiv.textContent = currentCounter
+  }
+}
+getItemLocalStorage ()
+
