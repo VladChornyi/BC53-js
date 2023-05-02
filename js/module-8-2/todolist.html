@@ -116,6 +116,71 @@
       </form>
       <ul id="list"></ul>
     </div>
-    <script></script>
+    <script>
+      const form = document.querySelector("form");
+      const input = document.querySelector("#input");
+      const ul = document.querySelector("#list");
+      const KEY = "ToDO";
+      let todoList = [];
+
+      // Function to create new task element, return LI element
+      const createNewTaskElement = (value) => {
+        const todoMarkup = `
+              <li>
+                <input disabled value="${value}"/>
+                <div>
+                  <button data-action="delete">Delete</button>
+                </div>
+              </li>
+              `;
+
+        return todoMarkup;
+      };
+
+      // Function to handle submit action, call addTask inside
+      function handleSubmit(e) {
+        e.preventDefault();
+        if (todoList.includes(input.value)) {
+          alert("Already in the list. Please change task name");
+          return;
+        }
+        addTask(input.value);
+        input.blur();
+      }
+
+      // Function to add a task to the list (use createNewTaskElement) and add to LS
+      function addTask(value) {
+        todoList.push(value);
+        ul.insertAdjacentHTML("afterbegin", createNewTaskElement(value));
+        const todoJson = JSON.stringify(todoList);
+        localStorage.setItem(KEY, todoJson);
+      }
+
+      // Function to delete a task from the list and delete from LS
+      function deleteTask(event) {
+        const li = event.target.closest("li");
+        const inputValue = li.firstElementChild.value;
+        console.dir(inputValue);
+        todoList = todoList.filter((e) => e !== inputValue);
+        const todoJson = JSON.stringify(todoList);
+        localStorage.setItem(KEY, todoJson);
+        li.remove();
+        console.log(li);
+      }
+
+      // Function to get tasks from LS and set them into ul
+      function setTasksOnLoad() {
+        try {
+          todoList = JSON.parse(localStorage.getItem(KEY));
+          const load = todoList.map(createNewTaskElement).join("");
+          ul.innerHTML = load;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      setTasksOnLoad();
+      form.addEventListener("submit", handleSubmit);
+      ul.addEventListener("click", deleteTask);
+    </script>
   </body>
 </html>

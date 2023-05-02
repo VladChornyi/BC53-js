@@ -37,7 +37,7 @@
 
       .slider:before {
         position: absolute;
-        content: '';
+        content: "";
         height: 20px;
         width: 20px;
         left: 32px;
@@ -97,18 +97,31 @@
     </style>
   </head>
 
-    <body class="light">
-      <div class="toggle-switch">
-        <p>Dark</p>
-        <span>
-          <label class="switch">
-            <input id="theme-switch" type="checkbox" />
-            <span class="slider round"></span>
-          </label>
-        </span>
-        <p>Light</p>
-      </div>
-      <script></script>
-    </body>
-
+  <body class="light">
+    <div class="toggle-switch">
+      <p>Dark</p>
+      <span>
+        <label class="switch">
+          <input id="theme-switch" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </span>
+      <p>Light</p>
+    </div>
+    <script>
+      const themeSwitcher = document.getElementById("theme-switch");
+      const KEY = "theme";
+      themeSwitcher.checked = false;
+      themeSwitcher.addEventListener("change", clickHandler);
+      function clickHandler() {
+        document.body.classList.toggle("light");
+        document.body.classList.toggle("dark");
+        localStorage.setItem(KEY, themeSwitcher.checked);
+      }
+      function setThemeOnLoad() {
+        const state = localStorage.getItem(KEY);
+        themeSwitcher.checked = state ? true : false;
+      }
+    </script>
+  </body>
 </html>
