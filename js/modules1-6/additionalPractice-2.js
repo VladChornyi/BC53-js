@@ -32,41 +32,41 @@
 //4***. Напишіть функцію, яка приймає три колбеки. Перший колбек приймає масив та розмір частини, на яку потрібно розділити масив округлюючи довжину у більший бік([1,2,3,4,5],3 =>[1,2]). Другий колбек виконується над кожною частиною масиву перемноживши кожен наступний елемент на попередній,а перший на останній.Третій колбек - виконується над результатами другого колбеку і повертає суму парних елементів. Функція повинна повертати результат третього колбеку.
 
 //5*. Дано масив об'єктів з полями "id" та "name": [{id: 1, name: "John"}, {id: 2, name: "Jane"}, {id: 3, name: "Bob"}]. Напишіть функцію, яка додає новий об'єкт з вказаним "id" та "name" у масив, або замінює вже існуючий об'єкт з вказаним "id" на новий об'єкт з вказаним "name". Також напишіть функцію для видалення об'єкта з вказаним "id" з масиву.
-// let data = [
-//   { id: 1, name: "John" },
-//   { id: 2, name: "Jane" },
-//   { id: 3, name: "Bob" },
-// ];
+let data = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+  { id: 3, name: "Bob" },
+];
 
-// //                        id
-// const addOrEdit = (data, obj) => {
-//   const objToUpd = data.find((el) => {
-//     return el.id === obj.id;
-//   });
+//                        id
+const addOrEdit = (data, obj) => {
+  const objToUpd = data.find((el) => {
+    return el.id === obj.id;
+  });
 
-//   if (objToUpd) {
-//     objToUpd.name = obj.name;
-//   } else {
-//     data.push(obj);
-//   }
+  if (objToUpd) {
+    objToUpd.name = obj.name;
+  } else {
+    data.push(obj);
+  }
 
-//   console.log(data);
-// };
+  console.log(data);
+};
 
-// const delObj = (data, id) => {
-//   const index = data.findIndex((el) => {
-//     return el.id === id;
-//   });
+const delObj = (data, id) => {
+  const index = data.findIndex((el) => {
+    return el.id === id;
+  });
 
-//   if (index === -1) {
-//     return `Element ${id} is not defined`;
-//   }
-//   data.splice(index, 1);
-//   console.log(data);
-// };
+  if (index === -1) {
+    return `Element ${id} is not defined`;
+  }
+  data.splice(index, 1);
+  console.log(data);
+};
 
-// addOrEdit(data, { id: 211, name: "Nikita" });
-// console.log(delObj(data, 2));
+addOrEdit(data, { id: 211, name: "Nikita" });
+console.log(delObj(data, 2));
 
 // // Додавання нового об'єкту
 // addOrUpdate(data, { id: 4, name: "Mike" });
@@ -242,50 +242,161 @@
 //     items: [{ id: 1, name: "book", quantity: 1 }],
 //   },
 // ];
+// Потрібно отримати список імен жінок старше 25 років, відсортований за алфавітом.
+const orders = [
+  {
+    id: 1,
+    name: "John",
+    date: "2022-01-01",
+    total: 50,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 2 },
+      { id: 2, name: "pen", quantity: 5 },
+    ],
+  },
+  {
+    id: 2,
+    name: "Jane",
+    date: "2022-02-03",
+    total: 20,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 3, name: "pencil", quantity: 3 },
+    ],
+  },
+  {
+    id: 3,
+    name: "Bob",
+    date: "2022-03-05",
+    total: 100,
+    paid: false,
+    items: [
+      { id: 2, name: "pen", quantity: 10 },
+      { id: 4, name: "notebook", quantity: 1 },
+    ],
+  },
+  {
+    id: 4,
+    name: "Alice",
+    date: "2022-04-07",
+    total: 70,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 4 },
+      { id: 4, name: "notebook", quantity: 2 },
+    ],
+  },
+  {
+    id: 5,
+    name: "Jim",
+    date: "2022-05-09",
+    total: 30,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 2, name: "pen", quantity: 2 },
+    ],
+  },
+  {
+    id: 6,
+    name: "Sara",
+    date: "2022-06-11",
+    total: 80,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 6 },
+      { id: 4, name: "notebook", quantity: 3 },
+    ],
+  },
+  {
+    id: 7,
+    name: "John",
+    date: "2022-01-03",
+    total: 90,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 2 },
+      { id: 2, name: "pen", quantity: 5 },
+      { id: 1, name: "book", quantity: 1 },
+    ],
+  },
+  {
+    id: 8,
+    name: "Jim",
+    date: "2022-08-09",
+    total: 30,
+    paid: true,
+    items: [
+      { id: 1, name: "book", quantity: 1 },
+      { id: 4, name: "notebook", quantity: 2 },
+    ],
+  },
+  {
+    id: 9,
+    name: "Jim",
+    date: "2022-06-11",
+    total: 45,
+    paid: true,
+    items: [
+      { id: 3, name: "pencil", quantity: 1 },
+      { id: 2, name: "pen", quantity: 2 },
+    ],
+  },
+  {
+    id: 10,
+    name: "John",
+    date: "2022-08-03",
+    total: 90,
+    paid: true,
+    items: [{ id: 1, name: "book", quantity: 1 }],
+  },
+];
 
-// 8***. Задача: дано масив об'єктів, що представляють замовлення в інтернет-магазині.
-// Кожен об'єкт містить поля з номером замовлення, ім'я клієнта, датою замовлення, сумою замовлення та
-// статусом(заплачено або ні).Потрібно отримати масив об'єктів з інформацією про топ-5 клієнтів, які
-// зробили найбільше замовлень, та середньою сумою їх замовлень, а також масив об'єктів з інформацією
-//  про топ - 5 товарів за кількістю продажів, та загальну кількість проданих одиниць кожного товару.
-// //
+// // 8***. Задача: дано масив об'єктів, що представляють замовлення в інтернет-магазині.
+// // Кожен об'єкт містить поля з номером замовлення, ім'я клієнта, датою замовлення, сумою замовлення та
+// // статусом(заплачено або ні).Потрібно отримати масив об'єктів з інформацією про топ-5 клієнтів, які
+// // зробили найбільше замовлень, та середньою сумою їх замовлень, а також масив об'єктів з інформацією
+// //  про топ - 5 товарів за кількістю продажів, та загальну кількість проданих одиниць кожного товару.
+// // //
 
-// const firstUsers = (array) => {
-//   const orders = [];
+const firstUsers = (array) => {
+  const orders = [];
 
-//   for (let i = 0; i < array.length; i += 1) {
-//     const order = {};
-//     order.items = [];
-//     if (order.length === 0) {
-//       order.name = array[i].name;
-//       order.total = array[i].total;
-//       order.items = array[i].items;
+  for (let i = 0; i < array.length; i += 1) {
+    const order = {};
+    order.items = [];
+    if (order.length === 0) {
+      order.name = array[i].name;
+      order.total = array[i].total;
+      order.items = array[i].items;
 
-//       orders.push(order);
-//     } else {
-//       let userPocupa = false;
-//       for (let i = 0; i < orders.length; i += 1) {
-//         if (orders.name === array[i].name) {
-//           userPocupa = true;
-//           orders[i].total += array[i].total;
-//           orders[i].items.push(array[i].items);
-//         }
-//       }
-//       if (!userPocupa) {
-//         order.name = array[i].name;
-//         order.total = array[i].total;
-//         order.items = array[i].items;
+      orders.push(order);
+    } else {
+      let userPocupa = false;
+      for (let i = 0; i < orders.length; i += 1) {
+        if (orders.name === array[i].name) {
+          userPocupa = true;
+          orders[i].total += array[i].total;
+          orders[i].items.push(array[i].items);
+        }
+      }
+      if (!userPocupa) {
+        order.name = array[i].name;
+        order.total = array[i].total;
+        order.items = array[i].items;
 
-//         orders.push(order);
-//       }
-//     }
-//   }
+        orders.push(order);
+      }
+    }
+  }
 
-//   return orders.sort((a, b) => b.total - a.total).slice(0, 5);
-// };
+  return orders.sort((a, b) => b.total - a.total).slice(0, 5);
+};
 
-// const result_users = firstUsers(orders);
-// console.log(result_users);
+const result_users = firstUsers(orders);
+console.log(result_users);
 
 // const topUsersClient = (array, number) => {
 //   const topClients = [];
@@ -385,3 +496,99 @@
 // const productsFavorit = topProducts(orders);
 
 // console.log(productsFavorit);
+const cars = [
+  {
+    make: "Honda",
+    model: "CR-V",
+    type: "suv",
+    amount: 14,
+    price: 24045,
+    onSale: true,
+  },
+  {
+    make: "Honda",
+    model: "Accord",
+    type: "sedan",
+    amount: 2,
+    price: 22455,
+    onSale: true,
+  },
+  {
+    make: "Mazda",
+    model: "Mazda 6",
+    type: "sedan",
+    amount: 8,
+    price: 24195,
+    onSale: false,
+  },
+  {
+    make: "Mazda",
+    model: "CX-9",
+    type: "suv",
+    amount: 7,
+    price: 31520,
+    onSale: true,
+  },
+  {
+    make: "Toyota",
+    model: "4Runner",
+    type: "suv",
+    amount: 19,
+    price: 34210,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Sequoia",
+    type: "suv",
+    amount: 16,
+    price: 45560,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Tacoma",
+    type: "truck",
+    amount: 4,
+    price: 24320,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "F-150",
+    type: "truck",
+    amount: 11,
+    price: 27110,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Fusion",
+    type: "sedan",
+    amount: 13,
+    price: 22120,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Explorer",
+    type: "suv",
+    amount: 6,
+    price: 31660,
+    onSale: false,
+  },
+];
+
+const myMake = (arr) => {
+  const markAvto = arr.reduce((acc, car) => {
+    if (car.make === "Ford") {
+      console.log(car);
+      acc.push(car);
+    }
+    return acc;
+  }, []);
+  return markAvto;
+};
+
+const result = myMake(cars);
+console.log(result);
