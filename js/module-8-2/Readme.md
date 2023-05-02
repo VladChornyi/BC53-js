@@ -70,7 +70,9 @@ function addTask() {}
 function deleteTask() {}
 
 // Function to get tasks from LS and set them into ul
-function setTasksOnLoad() {}
+function setTasksOnLoad() {
+  
+}
 
 form.addEventListener("submit", handleSubmit);
 ul.addEventListener("click", deleteTask);
@@ -141,5 +143,5 @@ function createMarkup(products) {
   return markup;
 }
 
-function setFavoritesOnLoad(){}
+function setFavoritesOnLoad() {}
 ```
