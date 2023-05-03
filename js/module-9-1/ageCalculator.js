@@ -3,13 +3,15 @@ const birthdayEl = document.getElementById("birthday");
 const resultEl = document.getElementById("result");
 
 function calculateAge(evt) {
-  console.log("evt :>> ", birthdayEl.value);
-  const data = new Date("2023-05-11");
-  console.log("data :>> ", data);
-  const result = data - birthdayEl.value;
-  console.log(result);
+  const data = new Date(birthdayEl.value);
+  const currentDate = new Date()
+
+  const result = getAge(currentDate - data);
+  window.result.textContent = `Your age is ${result} years old`
 }
 
-function getAge(birthdayValue) {}
-
 btnEl.addEventListener("click", calculateAge);
+
+function getAge(number){
+  return Math.floor(number / (1000*60*60*24*365.25))
+}
