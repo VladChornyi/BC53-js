@@ -10,6 +10,7 @@ import {
 // import * as test from "./expenses.js";
 const select = document.querySelector("#expenses");
 const categories = getUnicCategories(expenses);
+console.log(categories);
 
 const count = document.querySelector(".count");
 
