@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f2f2f2;
+      font-family: sans-serif;
+    }
+
+    .container {
+      margin: 20px auto;
+      width: 1140px;
+      max-width: 98%;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      font-size: 18px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      margin-left: 5px;
+      background-color: #008cba;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #006d9e;
+    }
+
+    ul {
+      margin-top: 20px;
+      list-style-type: none;
+      position: relative;
+    }
+
+    li {
+      padding: 10px;
+      background-color: #f2f2f2;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+    }
+    li div {
+      display: flex;
+      gap: 8px;
+    }
+    li input {
+      width: 70%;
+      border: none;
+      background-color: #f2f2f2;
+    }
+    li input.active {
+      width: 70%;
+      background-color: #ffffff;
+    }
+    li button[data-action="edit"] {
+      background-color: #355075;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    li button[data-action="edit"].active {
+      background-color: #2f7600;
+      color: #fff;
+    }
+
+    li button[data-action="delete"] {
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    li button:hover {
+      opacity: 0.8;
+    }
+    li .name {
+      max-width: 120px;
+    }
+    li .last-name {
+      max-width: 120px;
+    }
+    li .country {
+      max-width: 72px;
+    }
+    li input.age {
+      max-width: 24px;
+    }
+    li .pet {
+      max-width: 180px;
+    }
+    li .hobby {
+      max-width: 300px;
+    }
+    li:first-child {
+      position: sticky;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Students list</h1>
+      <form>
+        <input type="text" id="input" placeholder="Enter Id" />
+        <button type="submit" id="addBtn">AddStudent</button>
+        <button type="submit" id="getBtn">GetAllStudents</button>
+      </form>
+      <ul id="list">
+        <li>
+          <input disabled class="name" value="Name" />
+          <input disabled class="last-name" value="Last Name" />
+          <input disabled class="age" value="Age" />
+          <input disabled class="country" value="Country" />
+          <input disabled class="pet" value="Pet" />
+          <input disabled class="hobby" value="Hobby" />
+        </li>
+      </ul>
+    </div>
+    <script>
+      const BASE_URL = new URL("https://63c7e1d3075b3f3a91d50f37.mockapi.io/");
+
+      window.addBtn.addEventListener("click", onAddClick);
+      window.getBtn.addEventListener("click", onGetClick);
+      function onAddClick(e) {
+        e.preventDefault();
+        console.log("Add button press");
+      }
+      function onGetClick(e) {
+        e.preventDefault();
+        console.log("Get button press");
+        getStudents()
+          .then((res) => res.map(createNewRowElement).join(""))
+          .then((res) => {
+            window.list.insertAdjacentHTML("beforeend", res);
+          })
+          .catch((error) => console.log(error));
+      }
+      const student = {
+        age: 33,
+        animal: "sparrow",
+        animalName: "Platon",
+        country: "Ukraine",
+        hobbies: ["football", "go", "tennis"],
+        lastName: "Yefremov",
+        name: "Vitalii",
+      };
+      function getStudents() {
+        const endPoint = "bc53-students";
+        return fetch(BASE_URL + endPoint, {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        }).then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw Error(res.status);
+        });
+      }
+      function addStudent(newTask) {
+        const endPoint = "bc53-students";
+        fetch(BASE_URL + endPoint, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(newTask),
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+            throw new Error("Failed");
+          })
+          .then((task) => {
+            console.log(task);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      function getStudentbyId(id) {
+        const endPoint = "bc53-students/";
+        fetch(BASE_URL + endPoint + id, {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+          })
+          .then((tasks) => {
+            console.log(tasks);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      function deleteStudentbyId(id) {
+        const endPoint = "bc53-students/";
+        fetch(BASE_URL + endPoint + id, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+          })
+          .then((tasks) => {
+            console.log(tasks);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      function editStudentbyId(id, userInfo) {
+        const endPoint = "bc53-students/";
+        fetch(BASE_URL + endPoint + id, {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+          })
+          .then((tasks) => {
+            console.log(tasks);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      function createNewRowElement({
+        name,
+        lastName,
+        age,
+        country,
+        animal,
+        animalName,
+        hobbies,
+      }) {
+        return `
+              <li>
+                <input disabled class="name" value="${name}"/>
+                <input disabled class="last-name" value="${lastName}"/>
+                <input disabled class="age" value="${age}"/>
+                <input disabled class="country" value="${country}" />
+                <input disabled class="pet" value="${animal}: ${animalName}" />
+                <input disabled class="hobby" value="${hobbies}" />
+                <div>
+                  <button data-action="edit">Edit</button>
+                  <button data-action="delete">Delete</button>
+                </div>
+              </li>`;
+      }
+    </script>
+  </body>
+</html>
