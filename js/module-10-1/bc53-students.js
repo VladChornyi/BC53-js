@@ -2,16 +2,18 @@ const BASE_URL = "https://63c7e1d3075b3f3a91d50f37.mockapi.io/";
 const studentsUl = document.querySelector(".studentsUl");
 const addBtn = document.querySelector(".add_student");
 
+
 const student = {
   name: "Hannah",
   lastName: "Smith",
 };
 
 const createStudentCard = (el) => {
-  return `<li>
-    <img src="${el.userImage}" alt="${el.name}" width="150">
-    <p>${el.name} ${el.lastName}</p>
-</li>`;
+  return `<li data-id='${el.id}'>
+  <img src="${el.userImage}" alt="${el.name}" width="150">
+  <p>${el.name} ${el.lastName}</p>
+    <button type="button" data-delete>Delete student</button>
+  </li>`
 };
 
 const renderList = (arr) => {
@@ -39,3 +41,23 @@ const addStudent = (student) => {
 addBtn.addEventListener("click", () => {
   addStudent(student).then(createStudentCard).then(renderEl);
 });
+
+// Del student
+studentsUl.addEventListener('click', (event)=>{
+  if(event.target.hasAttribute('data-delete')){
+    const itemStudent = event.target.closest('li')
+    delStudent(itemStudent.dataset.id).then(()=>{
+      itemStudent.remove()
+    })
+  }
+})
+
+const delStudent = (id) => {
+  return fetch(`${BASE_URL}bc53-students/${id}`, {
+    method: "DELETE",
+  })
+  .then((response)=>response.json())
+  .catch((error)=>console.log(error.message))
+}
+
+
