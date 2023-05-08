@@ -45,7 +45,7 @@
       font-size: 18px;
     }
 
-    button[type="submit"] {
+    button[data-type="main"] {
       padding: 10px 20px;
       margin-left: 5px;
       background-color: #008cba;
@@ -56,7 +56,7 @@
       font-size: 18px;
     }
 
-    button[type="submit"]:hover {
+    button[data-type="main"]:hover {
       background-color: #006d9e;
     }
 
@@ -73,9 +73,10 @@
       border-radius: 5px;
       position: relative;
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
     }
     li div {
+      align-self: end;
       display: flex;
       gap: 8px;
     }
@@ -113,25 +114,26 @@
       opacity: 0.8;
     }
     li .name {
-      max-width: 120px;
-    }
-    li .last-name {
-      max-width: 120px;
+      max-width: 180px;
     }
     li .country {
-      max-width: 72px;
+      max-width: 120px;
     }
     li input.age {
-      max-width: 24px;
+      max-width: 72px;
     }
     li .pet {
       max-width: 180px;
     }
     li .hobby {
-      max-width: 300px;
+      max-width: 100%;
     }
-    li:first-child {
+    li:first-child input {
       position: sticky;
+      border-left: 2px solid #008cba;
+      font-size: 16px;
+      font-size: 700;
+      text-align: center;
     }
   </style>
   <body>
@@ -139,13 +141,14 @@
       <h1>Students list</h1>
       <form>
         <input type="text" id="input" placeholder="Enter Id" />
-        <button type="submit" id="addBtn">AddStudent</button>
-        <button type="submit" id="getBtn">GetAllStudents</button>
+        <button type="button" data-type="main" id="addBtn">AddStudent</button>
+        <button type="button" data-type="main" id="getBtn">
+          GetAllStudents
+        </button>
       </form>
       <ul id="list">
         <li>
-          <input disabled class="name" value="Name" />
-          <input disabled class="last-name" value="Last Name" />
+          <input disabled class="name" value="Full Name" />
           <input disabled class="age" value="Age" />
           <input disabled class="country" value="Country" />
           <input disabled class="pet" value="Pet" />
@@ -158,6 +161,7 @@
 
       window.addBtn.addEventListener("click", onAddClick);
       window.getBtn.addEventListener("click", onGetClick);
+      window.list.addEventListener("click", onDeleteClick);
       function onAddClick(e) {
         e.preventDefault();
         console.log("Add button press");
@@ -172,6 +176,24 @@
           })
           .catch((error) => console.log(error));
       }
+      function onDeleteClick(e) {
+        const target = e.target;
+        if (target.dataset.action === "delete") {
+          console.log("Delete button press");
+          target.disabled = true;
+          const element = target.closest("li");
+
+          deleteStudentbyId(element.dataset.id)
+            .then((r) => {
+              console.log(r);
+              element.remove();
+            })
+            .catch((e) => {
+              console.log("Failed to remove", e.status);
+              target.disabled = false;
+            });
+        }
+      }
       const student = {
         age: 33,
         animal: "sparrow",
@@ -183,10 +205,7 @@
       };
       function getStudents() {
         const endPoint = "bc53-students";
-        return fetch(BASE_URL + endPoint, {
-          method: "GET",
-          headers: { "content-type": "application/json" },
-        }).then((res) => {
+        return fetch(BASE_URL + endPoint).then((res) => {
           if (res.ok) {
             return res.json();
           }
@@ -199,72 +218,43 @@
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(newTask),
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-            throw new Error("Failed");
-          })
-          .then((task) => {
-            console.log(task);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        }).then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw new Error("Failed");
+        });
       }
       function getStudentbyId(id) {
         const endPoint = "bc53-students/";
-        fetch(BASE_URL + endPoint + id, {
-          method: "GET",
-          headers: { "content-type": "application/json" },
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((tasks) => {
-            console.log(tasks);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        fetch(BASE_URL + endPoint + id).then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        });
       }
       function deleteStudentbyId(id) {
         const endPoint = "bc53-students/";
-        fetch(BASE_URL + endPoint + id, {
+        return fetch(BASE_URL + endPoint + id, {
           method: "DELETE",
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((tasks) => {
-            console.log(tasks);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        }).then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw Error("Not Ok");
+        });
       }
       function editStudentbyId(id, userInfo) {
         const endPoint = "bc53-students/";
         fetch(BASE_URL + endPoint + id, {
           method: "PUT",
           headers: { "content-type": "application/json" },
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((tasks) => {
-            console.log(tasks);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        }).then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw Error("Not Ok");
+        });
       }
       function createNewRowElement({
         name,
@@ -274,13 +264,18 @@
         animal,
         animalName,
         hobbies,
+        id,
       }) {
         return `
-              <li>
-                <input disabled class="name" value="${name}"/>
-                <input disabled class="last-name" value="${lastName}"/>
-                <input disabled class="age" value="${age}"/>
-                <input disabled class="country" value="${country}" />
+              <li data-id="${id}">
+                <input disabled class="name" value="${name} ${lastName}"/>
+                <input disabled class="age" value="${new Date(
+                  age
+                ).getFullYear()}"/>
+                <input disabled class="country" value="${cutBack(
+                  country,
+                  12
+                )}" />
                 <input disabled class="pet" value="${animal}: ${animalName}" />
                 <input disabled class="hobby" value="${hobbies}" />
                 <div>
@@ -289,6 +284,11 @@
                 </div>
               </li>`;
       }
+      function cutBack(str, number = 1) {
+        return str.length < number ? str : str.substring(0, number - 1) + "...";
+      }
+      const date = new Date();
+      console.log(date.getFullYear());
     </script>
   </body>
 </html>
