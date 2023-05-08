@@ -1,4 +1,7 @@
-button{
-    padding: 15px;
-    background-color: blue;
+button {
+  padding: 15px;
+  background-color: blue;
+}
+ul {
+  list-style: none;
 }
