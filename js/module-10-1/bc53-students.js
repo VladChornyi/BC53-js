@@ -1,6 +1,12 @@
 const BASE_URL = 'https://63c7e1d3075b3f3a91d50f37.mockapi.io/';
 const studentsUl = document.querySelector('.studentsUl');
 const addBtn = document.querySelector('.add_student');
+const inputFilter = document.querySelector('.filter');
+const studentList = [];
+
+// console.log(inputFilter);
+
+inputFilter.addEventListener('input',onInput)
 
 const createStudentCard = el => {
   return `<li data-id='${el.id}'>
@@ -22,7 +28,9 @@ const renderEl = el => {
 const getStudentList = () => {
   return fetch(`${BASE_URL}bc53-students`).then(response => response.json());
 };
-getStudentList().then(renderList);
+getStudentList().then((res)=>{
+  studentList.push(...res);
+  renderList(res)});
 
 const addStudent = student => {
   return fetch(`${BASE_URL}bc53-students`, {
@@ -42,6 +50,8 @@ studentsUl.addEventListener('click', event => {
     const itemStudent = event.target.closest('li');
     delStudent(itemStudent.dataset.id).then(() => {
       itemStudent.remove();
+      const index = studentList.findIndex((e)=>itemStudent.dataset.id === e.id);
+      console.log(studentList.splice(index,1));
     });
   }
 });
@@ -67,3 +77,9 @@ form.addEventListener('submit', event => {
   };
   addStudent(student).then(createStudentCard).then(renderEl);
 });
+ function onInput(e){
+  const value = e.target.value.toLowerCase();
+  console.log(e.target.value);
+  renderList(studentList.filter((e)=>(e.name.toLowerCase().includes(value) || e.lastName.toLowerCase().includes(value))))
+
+ }
