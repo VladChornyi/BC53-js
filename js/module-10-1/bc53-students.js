@@ -6,7 +6,8 @@ const studentList = [];
 
 // console.log(inputFilter);
 
-inputFilter.addEventListener('input',onInput)
+
+inputFilter.addEventListener('input',_.debounce(onInput,500))
 
 const createStudentCard = el => {
   return `<li data-id='${el.id}'>
@@ -40,9 +41,9 @@ const addStudent = student => {
   }).then(response => response.json());
 };
 
-addBtn.addEventListener('click', () => {
-  addStudent(student).then(createStudentCard).then(renderEl);
-});
+// addBtn.addEventListener('click', () => {
+//   addStudent(student).then(createStudentCard).then(renderEl);
+// });
 
 // Del student
 studentsUl.addEventListener('click', event => {
@@ -75,7 +76,11 @@ form.addEventListener('submit', event => {
     animalName: event.target.elements.animalName.value,
     animal: event.target.elements.animal.value,
   };
-  addStudent(student).then(createStudentCard).then(renderEl);
+  
+  addStudent(student).then((data)=>{
+    studentList.push(data)
+    return createStudentCard(data)})
+    .then(renderEl);
 });
  function onInput(e){
   const value = e.target.value.toLowerCase();
