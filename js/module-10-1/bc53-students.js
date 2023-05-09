@@ -1,63 +1,69 @@
-const BASE_URL = "https://63c7e1d3075b3f3a91d50f37.mockapi.io/";
-const studentsUl = document.querySelector(".studentsUl");
-const addBtn = document.querySelector(".add_student");
+const BASE_URL = 'https://63c7e1d3075b3f3a91d50f37.mockapi.io/';
+const studentsUl = document.querySelector('.studentsUl');
+const addBtn = document.querySelector('.add_student');
 
-
-const student = {
-  name: "Hannah",
-  lastName: "Smith",
-};
-
-const createStudentCard = (el) => {
+const createStudentCard = el => {
   return `<li data-id='${el.id}'>
   <img src="${el.userImage}" alt="${el.name}" width="150">
   <p>${el.name} ${el.lastName}</p>
     <button type="button" data-delete>Delete student</button>
-  </li>`
+  </li>`;
 };
 
-const renderList = (arr) => {
-  const students = arr.map(createStudentCard).join("");
+const renderList = arr => {
+  const students = arr.map(createStudentCard).join('');
   studentsUl.innerHTML = students;
 };
 
-const renderEl = (el) => {
-  studentsUl.insertAdjacentHTML("beforeend", el);
+const renderEl = el => {
+  studentsUl.insertAdjacentHTML('beforeend', el);
 };
 
 const getStudentList = () => {
-  return fetch(`${BASE_URL}bc53-students`).then((response) => response.json());
+  return fetch(`${BASE_URL}bc53-students`).then(response => response.json());
 };
 getStudentList().then(renderList);
 
-const addStudent = (student) => {
+const addStudent = student => {
   return fetch(`${BASE_URL}bc53-students`, {
-    headers: { "Content-Type": "application/json" },
-    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    method: 'POST',
     body: JSON.stringify(student),
-  }).then((response) => response.json());
+  }).then(response => response.json());
 };
 
-addBtn.addEventListener("click", () => {
+addBtn.addEventListener('click', () => {
   addStudent(student).then(createStudentCard).then(renderEl);
 });
 
 // Del student
-studentsUl.addEventListener('click', (event)=>{
-  if(event.target.hasAttribute('data-delete')){
-    const itemStudent = event.target.closest('li')
-    delStudent(itemStudent.dataset.id).then(()=>{
-      itemStudent.remove()
-    })
+studentsUl.addEventListener('click', event => {
+  if (event.target.hasAttribute('data-delete')) {
+    const itemStudent = event.target.closest('li');
+    delStudent(itemStudent.dataset.id).then(() => {
+      itemStudent.remove();
+    });
   }
-})
+});
 
-const delStudent = (id) => {
+const delStudent = id => {
   return fetch(`${BASE_URL}bc53-students/${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   })
-  .then((response)=>response.json())
-  .catch((error)=>console.log(error.message))
-}
+    .then(response => response.json())
+    .catch(error => console.log(error.message));
+};
 
-
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const student = {
+    name: event.target.elements.name.value,
+    lastName: event.target.elements.lastName.value,
+    age: event.target.elements.age.value,
+    country: event.target.elements.country.value,
+    animalName: event.target.elements.animalName.value,
+    animal: event.target.elements.animal.value,
+  };
+  addStudent(student).then(createStudentCard).then(renderEl);
+});
