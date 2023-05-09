@@ -78,8 +78,9 @@ form.addEventListener('submit', event => {
   };
   
   addStudent(student).then((data)=>{
-    studentList.push(data)
-    return createStudentCard(data)})
+    studentList.push(data);
+    return createStudentCard(data);
+  })
     .then(renderEl);
 });
  function onInput(e){
