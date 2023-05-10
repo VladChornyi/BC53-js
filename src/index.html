@@ -8,8 +8,28 @@
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    
-   <h1>Module 11</h1>
-   <ul class="list"></ul>
+
+    <h1>Module 11</h1>
+    <!-- //alive, dead or unknown -->
+    <!-- //female, male, genderless or unknown -->
+    <form>
+      <input name="name" type="text" />
+
+      <select name="status">
+        <option value="alive">Alive</option>
+        <option value="dead">Dead</option>
+        <option value="unknown">Unknown</option>
+      </select>
+
+      <select name="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="genderless">Genderless</option>
+        <option value="unknown">Unknown</option>
+      </select>
+
+      <button type="submit">getCharacterParams</button>
+    </form>
+    <ul class="list"></ul>
   </body>
 </html>
